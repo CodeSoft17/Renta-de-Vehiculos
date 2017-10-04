@@ -17,6 +17,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     public FrmmenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -57,13 +58,16 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        mnSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
         setBackground(new java.awt.Color(36, 47, 65));
+        setName("frmmenuPrincipal"); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cliente999\\Desktop\\prueba.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -71,16 +75,16 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(342, 342, 342)
+                .addGap(329, 329, 329)
                 .addComponent(jLabel1)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
+                .addContainerGap(199, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(189, 189, 189))
+                .addGap(190, 190, 190))
         );
 
         mnVehiculos.setText("Vehiculos");
@@ -182,6 +186,9 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        mnSalir.setText("Salir");
+        jMenuBar1.add(mnSalir);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,6 +286,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem minuevoProveedor;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mnRentas;
+    private javax.swing.JMenu mnSalir;
     private javax.swing.JMenu mnSolicitudes;
     private javax.swing.JMenu mnVehiculos;
     private javax.swing.JMenu mnproveedores;
