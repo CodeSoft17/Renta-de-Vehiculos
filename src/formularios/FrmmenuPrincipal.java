@@ -15,7 +15,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
      * Creates new form InicioEmpleado
      */
     public FrmmenuPrincipal() {
-        initComponents();
+        initComponents();   //Editar y elimar solo lo hace el administrador
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
