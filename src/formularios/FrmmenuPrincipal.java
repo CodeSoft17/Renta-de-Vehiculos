@@ -33,32 +33,32 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnVehiculos = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmenuBuscarVehiculo = new javax.swing.JMenuItem();
+        jMenuAgregarVehiculo = new javax.swing.JMenuItem();
+        jMenuEditarVehiculo = new javax.swing.JMenuItem();
+        jMenuAnularVehiculo = new javax.swing.JMenuItem();
         mnSolicitudes = new javax.swing.JMenu();
-        minuevaSolicitud = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        mnClientes = new javax.swing.JMenu();
+        jMenuNuevaSolicitud = new javax.swing.JMenuItem();
+        jMenuCancelarSolicitud = new javax.swing.JMenuItem();
+        jMenuNuevoCLiente = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        minuevoCliente = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        mnRentas = new javax.swing.JMenu();
+        jMenuBuscarCliente = new javax.swing.JMenuItem();
+        jMenuEditarCLiente = new javax.swing.JMenuItem();
+        jMenuELiminarCLiente = new javax.swing.JMenuItem();
+        jMenuNuevaRenta = new javax.swing.JMenu();
         minuevaRenta = new javax.swing.JMenuItem();
-        mibuscarRenta = new javax.swing.JMenuItem();
-        mnproveedores = new javax.swing.JMenu();
+        jMenuBuscarRenta = new javax.swing.JMenuItem();
+        jMenuNuevoProveedor = new javax.swing.JMenu();
         minuevoProveedor = new javax.swing.JMenuItem();
-        mibuscarProveedor = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuBuscarProveedor = new javax.swing.JMenuItem();
+        jMenuEditarProveedor = new javax.swing.JMenuItem();
+        jMenuELiminarProveedor = new javax.swing.JMenuItem();
+        jMenuReporteVehiculos = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        mnSalir = new javax.swing.JMenu();
+        jMenuReporteCLientes = new javax.swing.JMenuItem();
+        jMenuReporteEmpleados = new javax.swing.JMenuItem();
+        jMenuReporteProveedores = new javax.swing.JMenuItem();
+        jMenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
@@ -68,7 +68,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/jose/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,65 +89,65 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         mnVehiculos.setText("Vehiculos");
 
-        jMenuItem2.setText("Buscar Vehiculo");
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmenuBuscarVehiculo.setText("Buscar Vehiculo");
+        jmenuBuscarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem2MousePressed(evt);
+                jmenuBuscarVehiculoMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseClicked(evt);
+                jmenuBuscarVehiculoMouseClicked(evt);
             }
         });
-        mnVehiculos.add(jMenuItem2);
+        mnVehiculos.add(jmenuBuscarVehiculo);
 
-        jMenuItem3.setText("Agregar Vehiculo");
-        mnVehiculos.add(jMenuItem3);
+        jMenuAgregarVehiculo.setText("Agregar Vehiculo");
+        mnVehiculos.add(jMenuAgregarVehiculo);
 
-        jMenuItem4.setText("Editar Vehiculo");
-        mnVehiculos.add(jMenuItem4);
+        jMenuEditarVehiculo.setText("Editar Vehiculo");
+        mnVehiculos.add(jMenuEditarVehiculo);
 
-        jMenuItem5.setText("Anular Vehiculo");
-        mnVehiculos.add(jMenuItem5);
+        jMenuAnularVehiculo.setText("Anular Vehiculo");
+        mnVehiculos.add(jMenuAnularVehiculo);
 
         jMenuBar1.add(mnVehiculos);
 
         mnSolicitudes.setText("Solicitudes");
 
-        minuevaSolicitud.setText("Nueva Solicitud");
-        mnSolicitudes.add(minuevaSolicitud);
+        jMenuNuevaSolicitud.setText("Nueva Solicitud");
+        mnSolicitudes.add(jMenuNuevaSolicitud);
 
-        jMenuItem12.setText("Cancelar Solicitud");
-        mnSolicitudes.add(jMenuItem12);
+        jMenuCancelarSolicitud.setText("Cancelar Solicitud");
+        mnSolicitudes.add(jMenuCancelarSolicitud);
 
         jMenuBar1.add(mnSolicitudes);
 
-        mnClientes.setText("Clientes ");
+        jMenuNuevoCLiente.setText("Clientes ");
 
         jMenuItem1.setText("Nuevo Cliente");
-        mnClientes.add(jMenuItem1);
+        jMenuNuevoCLiente.add(jMenuItem1);
 
-        minuevoCliente.setText("Buscar Cliente");
-        mnClientes.add(minuevoCliente);
+        jMenuBuscarCliente.setText("Buscar Cliente");
+        jMenuNuevoCLiente.add(jMenuBuscarCliente);
 
-        jMenuItem13.setText("Editar Clientes");
-        mnClientes.add(jMenuItem13);
+        jMenuEditarCLiente.setText("Editar Clientes");
+        jMenuNuevoCLiente.add(jMenuEditarCLiente);
 
-        jMenuItem14.setText("Eliminar Clientes");
-        mnClientes.add(jMenuItem14);
+        jMenuELiminarCLiente.setText("Eliminar Clientes");
+        jMenuNuevoCLiente.add(jMenuELiminarCLiente);
 
-        jMenuBar1.add(mnClientes);
+        jMenuBar1.add(jMenuNuevoCLiente);
 
-        mnRentas.setText("Rentas");
+        jMenuNuevaRenta.setText("Rentas");
 
         minuevaRenta.setText("Nueva Renta");
-        mnRentas.add(minuevaRenta);
+        jMenuNuevaRenta.add(minuevaRenta);
 
-        mibuscarRenta.setText("Buscar Renta");
-        mnRentas.add(mibuscarRenta);
+        jMenuBuscarRenta.setText("Buscar Renta");
+        jMenuNuevaRenta.add(jMenuBuscarRenta);
 
-        jMenuBar1.add(mnRentas);
+        jMenuBar1.add(jMenuNuevaRenta);
 
-        mnproveedores.setText("Proveedores");
+        jMenuNuevoProveedor.setText("Proveedores");
 
         minuevoProveedor.setText("Nuevo Proveedor");
         minuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -155,42 +155,42 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
                 minuevoProveedorActionPerformed(evt);
             }
         });
-        mnproveedores.add(minuevoProveedor);
+        jMenuNuevoProveedor.add(minuevoProveedor);
 
-        mibuscarProveedor.setText("Buscar Proveedor");
-        mibuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBuscarProveedor.setText("Buscar Proveedor");
+        jMenuBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mibuscarProveedorActionPerformed(evt);
+                jMenuBuscarProveedorActionPerformed(evt);
             }
         });
-        mnproveedores.add(mibuscarProveedor);
+        jMenuNuevoProveedor.add(jMenuBuscarProveedor);
 
-        jMenuItem10.setText("Editar Proveedor");
-        mnproveedores.add(jMenuItem10);
+        jMenuEditarProveedor.setText("Editar Proveedor");
+        jMenuNuevoProveedor.add(jMenuEditarProveedor);
 
-        jMenuItem11.setText("Eliminar Proveedor");
-        mnproveedores.add(jMenuItem11);
+        jMenuELiminarProveedor.setText("Eliminar Proveedor");
+        jMenuNuevoProveedor.add(jMenuELiminarProveedor);
 
-        jMenuBar1.add(mnproveedores);
+        jMenuBar1.add(jMenuNuevoProveedor);
 
-        jMenu1.setText("Reportes");
+        jMenuReporteVehiculos.setText("Reportes");
 
         jMenuItem6.setText("Reporte de Vehiculos");
-        jMenu1.add(jMenuItem6);
+        jMenuReporteVehiculos.add(jMenuItem6);
 
-        jMenuItem7.setText("Reporte Clientes");
-        jMenu1.add(jMenuItem7);
+        jMenuReporteCLientes.setText("Reporte Clientes");
+        jMenuReporteVehiculos.add(jMenuReporteCLientes);
 
-        jMenuItem8.setText("Reporte Empleados");
-        jMenu1.add(jMenuItem8);
+        jMenuReporteEmpleados.setText("Reporte Empleados");
+        jMenuReporteVehiculos.add(jMenuReporteEmpleados);
 
-        jMenuItem9.setText("Reporte Proveedores");
-        jMenu1.add(jMenuItem9);
+        jMenuReporteProveedores.setText("Reporte Proveedores");
+        jMenuReporteVehiculos.add(jMenuReporteProveedores);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuReporteVehiculos);
 
-        mnSalir.setText("Salir");
-        jMenuBar1.add(mnSalir);
+        jMenuSalir.setText("Salir");
+        jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -212,23 +212,23 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mibuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mibuscarProveedorActionPerformed
+    private void jMenuBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mibuscarProveedorActionPerformed
+    }//GEN-LAST:event_jMenuBuscarProveedorActionPerformed
 
     private void minuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minuevoProveedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_minuevoProveedorActionPerformed
 
-    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+    private void jmenuBuscarVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenuBuscarVehiculoMouseClicked
         // TODO add your handling code here:      
-    }//GEN-LAST:event_jMenuItem2MouseClicked
+    }//GEN-LAST:event_jmenuBuscarVehiculoMouseClicked
 
-    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+    private void jmenuBuscarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenuBuscarVehiculoMousePressed
         // TODO add your handling code here:
         new FrmbuscarVehiculos().setVisible(true);
         this.setVisible(false);  
-    }//GEN-LAST:event_jMenuItem2MousePressed
+    }//GEN-LAST:event_jmenuBuscarVehiculoMousePressed
 
     /**
      * @param args the command line arguments
@@ -270,34 +270,34 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuAgregarVehiculo;
+    private javax.swing.JMenuItem jMenuAnularVehiculo;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuBuscarCliente;
+    private javax.swing.JMenuItem jMenuBuscarProveedor;
+    private javax.swing.JMenuItem jMenuBuscarRenta;
+    private javax.swing.JMenuItem jMenuCancelarSolicitud;
+    private javax.swing.JMenuItem jMenuELiminarCLiente;
+    private javax.swing.JMenuItem jMenuELiminarProveedor;
+    private javax.swing.JMenuItem jMenuEditarCLiente;
+    private javax.swing.JMenuItem jMenuEditarProveedor;
+    private javax.swing.JMenuItem jMenuEditarVehiculo;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu jMenuNuevaRenta;
+    private javax.swing.JMenuItem jMenuNuevaSolicitud;
+    private javax.swing.JMenu jMenuNuevoCLiente;
+    private javax.swing.JMenu jMenuNuevoProveedor;
+    private javax.swing.JMenuItem jMenuReporteCLientes;
+    private javax.swing.JMenuItem jMenuReporteEmpleados;
+    private javax.swing.JMenuItem jMenuReporteProveedores;
+    private javax.swing.JMenu jMenuReporteVehiculos;
+    private javax.swing.JMenu jMenuSalir;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuItem mibuscarProveedor;
-    private javax.swing.JMenuItem mibuscarRenta;
+    private javax.swing.JMenuItem jmenuBuscarVehiculo;
     private javax.swing.JMenuItem minuevaRenta;
-    private javax.swing.JMenuItem minuevaSolicitud;
-    private javax.swing.JMenuItem minuevoCliente;
     private javax.swing.JMenuItem minuevoProveedor;
-    private javax.swing.JMenu mnClientes;
-    private javax.swing.JMenu mnRentas;
-    private javax.swing.JMenu mnSalir;
     private javax.swing.JMenu mnSolicitudes;
     private javax.swing.JMenu mnVehiculos;
-    private javax.swing.JMenu mnproveedores;
     // End of variables declaration//GEN-END:variables
 }

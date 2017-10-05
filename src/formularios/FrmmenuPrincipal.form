@@ -9,26 +9,26 @@
             <Property name="text" type="java.lang.String" value="Vehiculos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuBuscarVehiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Vehiculo"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem2MousePressed"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem2MouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmenuBuscarVehiculoMousePressed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmenuBuscarVehiculoMouseClicked"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuAgregarVehiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Vehiculo"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuEditarVehiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Vehiculo"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuAnularVehiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Anular Vehiculo"/>
               </Properties>
@@ -40,19 +40,19 @@
             <Property name="text" type="java.lang.String" value="Solicitudes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="minuevaSolicitud">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuNuevaSolicitud">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nueva Solicitud"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuCancelarSolicitud">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar Solicitud"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnClientes">
+        <Menu class="javax.swing.JMenu" name="jMenuNuevoCLiente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Clientes "/>
           </Properties>
@@ -62,24 +62,24 @@
                 <Property name="text" type="java.lang.String" value="Nuevo Cliente"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="minuevoCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscarCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Cliente"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem13">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuEditarCLiente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Clientes"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem14">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuELiminarCLiente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Clientes"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnRentas">
+        <Menu class="javax.swing.JMenu" name="jMenuNuevaRenta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rentas"/>
           </Properties>
@@ -89,14 +89,14 @@
                 <Property name="text" type="java.lang.String" value="Nueva Renta"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mibuscarRenta">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscarRenta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Renta"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnproveedores">
+        <Menu class="javax.swing.JMenu" name="jMenuNuevoProveedor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
           </Properties>
@@ -109,27 +109,27 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minuevoProveedorActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mibuscarProveedor">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscarProveedor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Proveedor"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mibuscarProveedorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuBuscarProveedorActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuEditarProveedor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Proveedor"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuELiminarProveedor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Proveedor"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenuReporteVehiculos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
@@ -139,24 +139,24 @@
                 <Property name="text" type="java.lang.String" value="Reporte de Vehiculos"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuReporteCLientes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte Clientes"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuReporteEmpleados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte Empleados"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuReporteProveedores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte Proveedores"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnSalir">
+        <Menu class="javax.swing.JMenu" name="jMenuSalir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -240,7 +240,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png"/>
+              <Image iconType="2" name="/home/jose/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png"/>
             </Property>
           </Properties>
         </Component>

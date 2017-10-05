@@ -5,7 +5,6 @@
  */
 package formularios;
 
-import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 
 /**
@@ -34,12 +33,13 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblvehiculos = new javax.swing.JTable();
         cmbbusqueda = new javax.swing.JComboBox<>();
         txtbusqueda = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         btnsalir = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblvehiculos = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,6 +49,38 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmbbusqueda.setBackground(new java.awt.Color(36, 47, 65));
+        cmbbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmbbusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idVehiculo", "Placa", "Estado", "Año", "Modelo", "Color", "Marca", " " }));
+        cmbbusqueda.setFocusCycleRoot(true);
+        cmbbusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbusquedaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 100, -1));
+
+        txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
+        txtbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        txtbusqueda.setBorder(null);
+        jPanel1.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 130, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 130, 20));
+
+        btnsalir.setBackground(new java.awt.Color(36, 47, 65));
+        btnsalir.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir.setText("Salir");
+        btnsalir.setBorder(null);
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 90, 30));
+
+        jPanel2.setBackground(new java.awt.Color(91, 228, 138));
 
         tblvehiculos.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         tblvehiculos.setModel(new javax.swing.table.DefaultTableModel(
@@ -61,41 +93,12 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
                 "idVehiculo", "Placa", "Estado", "Año", "Modelo", "Color", "Marca"
             }
         ));
+        tblvehiculos.setEnabled(false);
         jScrollPane1.setViewportView(tblvehiculos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 720, 70));
+        jPanel2.add(jScrollPane1);
 
-        cmbbusqueda.setBackground(new java.awt.Color(36, 47, 65));
-        cmbbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        cmbbusqueda.setForeground(new java.awt.Color(0, 0, 0));
-        cmbbusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idVehiculo", "Placa", "Estado", "Año", "Modelo", "Color", "Marca", " " }));
-        cmbbusqueda.setBorder(null);
-        cmbbusqueda.setFocusCycleRoot(true);
-        cmbbusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbusquedaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cmbbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 100, -1));
-
-        txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
-        txtbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
-        txtbusqueda.setBorder(null);
-        jPanel1.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 120, 10));
-
-        btnsalir.setBackground(new java.awt.Color(36, 47, 65));
-        btnsalir.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnsalir.setText("Salir");
-        btnsalir.setBorder(null);
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 90, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 805, 260));
 
         getContentPane().add(jPanel1);
         getContentPane().add(jSeparator1);
@@ -153,6 +156,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cmbbusqueda;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
