@@ -39,6 +39,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         cmbbusqueda = new javax.swing.JComboBox<>();
         txtbusqueda = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        btnsalir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,6 +85,18 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         jPanel1.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 120, 10));
 
+        btnsalir.setBackground(new java.awt.Color(36, 47, 65));
+        btnsalir.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir.setText("Salir");
+        btnsalir.setBorder(null);
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 90, 30));
+
         getContentPane().add(jPanel1);
         getContentPane().add(jSeparator1);
 
@@ -93,6 +106,13 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     private void cmbbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbusquedaActionPerformed
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+         FrmmenuPrincipal ventana = new FrmmenuPrincipal();
+        ventana.show();
+        dispose();
+
+    }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +150,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cmbbusqueda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
