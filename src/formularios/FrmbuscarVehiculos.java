@@ -5,6 +5,7 @@
  */
 package formularios;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 
 /**
@@ -33,25 +34,12 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        grbvehiculo = new javax.swing.JPanel();
-        lblidvehiculo = new javax.swing.JLabel();
-        lblplaca = new javax.swing.JLabel();
-        lblestado = new javax.swing.JLabel();
-        lblaño = new javax.swing.JLabel();
-        lblmodelo = new javax.swing.JLabel();
-        lblcolor = new javax.swing.JLabel();
-        lblmarca = new javax.swing.JLabel();
-        txtidvehiculo = new javax.swing.JTextField();
-        txtplaca = new javax.swing.JTextField();
-        txtestado = new javax.swing.JTextField();
-        txtaño = new javax.swing.JTextField();
-        txtcolor = new javax.swing.JTextField();
-        txtmodelo = new javax.swing.JTextField();
-        txtmarca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblvehiculos = new javax.swing.JTable();
-        btnbuscar = new javax.swing.JButton();
-        btnsalir = new javax.swing.JButton();
+        cmbbusqueda = new javax.swing.JComboBox<>();
+        txtbusqueda = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Vehiculo");
@@ -60,123 +48,6 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        grbvehiculo.setBackground(new java.awt.Color(36, 47, 65));
-        grbvehiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)), "Vehiculo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11), new java.awt.Color(0, 204, 255))); // NOI18N
-        grbvehiculo.setForeground(new java.awt.Color(0, 204, 255));
-
-        lblidvehiculo.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblidvehiculo.setForeground(new java.awt.Color(0, 153, 255));
-        lblidvehiculo.setText("id Vehiculo");
-
-        lblplaca.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblplaca.setForeground(new java.awt.Color(0, 153, 255));
-        lblplaca.setText("Placa");
-
-        lblestado.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblestado.setForeground(new java.awt.Color(0, 153, 255));
-        lblestado.setText("Estado");
-
-        lblaño.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblaño.setForeground(new java.awt.Color(0, 153, 255));
-        lblaño.setText("Año");
-
-        lblmodelo.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblmodelo.setForeground(new java.awt.Color(0, 153, 255));
-        lblmodelo.setText("Modelo");
-
-        lblcolor.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblcolor.setForeground(new java.awt.Color(0, 153, 255));
-        lblcolor.setText("Color");
-
-        lblmarca.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblmarca.setForeground(new java.awt.Color(0, 153, 255));
-        lblmarca.setText("Marca");
-
-        txtidvehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidvehiculoActionPerformed(evt);
-            }
-        });
-
-        txtplaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtplacaActionPerformed(evt);
-            }
-        });
-
-        txtmodelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmodeloActionPerformed(evt);
-            }
-        });
-
-        txtmarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmarcaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout grbvehiculoLayout = new javax.swing.GroupLayout(grbvehiculo);
-        grbvehiculo.setLayout(grbvehiculoLayout);
-        grbvehiculoLayout.setHorizontalGroup(
-            grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(grbvehiculoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblidvehiculo)
-                    .addComponent(lblestado)
-                    .addComponent(lblaño)
-                    .addComponent(lblmodelo)
-                    .addComponent(lblcolor)
-                    .addComponent(lblmarca)
-                    .addComponent(lblplaca))
-                .addGap(89, 89, 89)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtidvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcolor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        grbvehiculoLayout.setVerticalGroup(
-            grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(grbvehiculoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblidvehiculo)
-                    .addComponent(txtidvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblplaca)
-                    .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblestado))
-                .addGap(18, 18, 18)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblaño))
-                .addGap(17, 17, 17)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblmodelo))
-                .addGap(18, 18, 18)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcolor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblcolor))
-                .addGap(18, 18, 18)
-                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblmarca))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(grbvehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         tblvehiculos.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         tblvehiculos.setModel(new javax.swing.table.DefaultTableModel(
@@ -191,45 +62,37 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblvehiculos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 720, 70));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 720, 70));
 
-        btnbuscar.setText("Buscar");
-        jPanel1.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 82, -1));
-
-        btnsalir.setText("Salir");
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+        cmbbusqueda.setBackground(new java.awt.Color(36, 47, 65));
+        cmbbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmbbusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        cmbbusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idVehiculo", "Placa", "Estado", "Año", "Modelo", "Color", "Marca", " " }));
+        cmbbusqueda.setBorder(null);
+        cmbbusqueda.setFocusCycleRoot(true);
+        cmbbusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
+                cmbbusquedaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 82, -1));
+        jPanel1.add(cmbbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 100, -1));
+
+        txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
+        txtbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        txtbusqueda.setBorder(null);
+        jPanel1.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 120, 10));
 
         getContentPane().add(jPanel1);
+        getContentPane().add(jSeparator1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.show();
-        dispose();
-    }//GEN-LAST:event_btnsalirActionPerformed
-
-    private void txtmarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmarcaActionPerformed
+    private void cmbbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtmarcaActionPerformed
-
-    private void txtmodeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmodeloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtmodeloActionPerformed
-
-    private void txtplacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtplacaActionPerformed
-
-    private void txtidvehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidvehiculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidvehiculoActionPerformed
+    }//GEN-LAST:event_cmbbusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,25 +130,12 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnbuscar;
-    private javax.swing.JButton btnsalir;
-    private javax.swing.JPanel grbvehiculo;
+    private javax.swing.JComboBox<String> cmbbusqueda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblaño;
-    private javax.swing.JLabel lblcolor;
-    private javax.swing.JLabel lblestado;
-    private javax.swing.JLabel lblidvehiculo;
-    private javax.swing.JLabel lblmarca;
-    private javax.swing.JLabel lblmodelo;
-    private javax.swing.JLabel lblplaca;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tblvehiculos;
-    private javax.swing.JTextField txtaño;
-    private javax.swing.JTextField txtcolor;
-    private javax.swing.JTextField txtestado;
-    private javax.swing.JTextField txtidvehiculo;
-    private javax.swing.JTextField txtmarca;
-    private javax.swing.JTextField txtmodelo;
-    private javax.swing.JTextField txtplaca;
+    private javax.swing.JTextField txtbusqueda;
     // End of variables declaration//GEN-END:variables
 }
