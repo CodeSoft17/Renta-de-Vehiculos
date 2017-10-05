@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import java.awt.Color;
+
 /**
  *
  * @author CIRCUS
@@ -19,6 +21,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +33,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        grbvehiculo = new javax.swing.JPanel();
         lblidvehiculo = new javax.swing.JLabel();
         lblplaca = new javax.swing.JLabel();
         lblestado = new javax.swing.JLabel();
@@ -53,13 +56,14 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Vehiculo");
         setName("frmbusquedaVehiculo"); // NOI18N
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(36, 47, 65));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)), "Vehiculo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11), new java.awt.Color(0, 204, 255))); // NOI18N
-        jPanel2.setForeground(new java.awt.Color(0, 204, 255));
+        grbvehiculo.setBackground(new java.awt.Color(36, 47, 65));
+        grbvehiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)), "Vehiculo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11), new java.awt.Color(0, 204, 255))); // NOI18N
+        grbvehiculo.setForeground(new java.awt.Color(0, 204, 255));
 
         lblidvehiculo.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblidvehiculo.setForeground(new java.awt.Color(0, 153, 255));
@@ -113,13 +117,13 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout grbvehiculoLayout = new javax.swing.GroupLayout(grbvehiculo);
+        grbvehiculo.setLayout(grbvehiculoLayout);
+        grbvehiculoLayout.setHorizontalGroup(
+            grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(grbvehiculoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblidvehiculo)
                     .addComponent(lblestado)
                     .addComponent(lblaño)
@@ -128,7 +132,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
                     .addComponent(lblmarca)
                     .addComponent(lblplaca))
                 .addGap(89, 89, 89)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtidvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,45 +140,49 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
                     .addComponent(txtcolor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        grbvehiculoLayout.setVerticalGroup(
+            grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(grbvehiculoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblidvehiculo)
                     .addComponent(txtidvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblplaca)
                     .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblestado))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblaño))
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblmodelo))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcolor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcolor))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(grbvehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblmarca))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.add(grbvehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+
         tblvehiculos.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         tblvehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -183,7 +191,10 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblvehiculos);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 720, 70));
+
         btnbuscar.setText("Buscar");
+        jPanel1.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 82, -1));
 
         btnsalir.setText("Salir");
         btnsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -191,52 +202,18 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
                 btnsalirActionPerformed(evt);
             }
         });
+        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 82, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(312, 312, 312)
-                        .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(122, 122, 122))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnbuscar)
-                    .addComponent(btnsalir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 540));
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtidvehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidvehiculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidvehiculoActionPerformed
-
-    private void txtplacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtplacaActionPerformed
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
+        ventana.show();
+        dispose();
+    }//GEN-LAST:event_btnsalirActionPerformed
 
     private void txtmarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmarcaActionPerformed
         // TODO add your handling code here:
@@ -246,11 +223,13 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtmodeloActionPerformed
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-         FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.show();
-        dispose();
-    }//GEN-LAST:event_btnsalirActionPerformed
+    private void txtplacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtplacaActionPerformed
+
+    private void txtidvehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidvehiculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidvehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,8 +269,8 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JPanel grbvehiculo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblaño;
     private javax.swing.JLabel lblcolor;
