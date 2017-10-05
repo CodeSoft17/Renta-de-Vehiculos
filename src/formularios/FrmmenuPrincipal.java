@@ -68,7 +68,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/prueba.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,9 +90,12 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         mnVehiculos.setText("Vehiculos");
 
         jMenuItem2.setText("Buscar Vehiculo");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem2MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseClicked(evt);
             }
         });
         mnVehiculos.add(jMenuItem2);
@@ -217,11 +220,15 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_minuevoProveedorActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FrmbuscarVehiculos ventana = new  FrmbuscarVehiculos ();
-         ventana.show();
-        dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+        // TODO add your handling code here:      
+    }//GEN-LAST:event_jMenuItem2MouseClicked
+
+    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+        // TODO add your handling code here:
+        new FrmbuscarVehiculos().setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_jMenuItem2MousePressed
 
     /**
      * @param args the command line arguments

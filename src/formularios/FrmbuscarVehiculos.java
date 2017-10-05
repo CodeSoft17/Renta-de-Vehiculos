@@ -109,7 +109,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
          FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.show();
+        ventana.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_btnsalirActionPerformed
