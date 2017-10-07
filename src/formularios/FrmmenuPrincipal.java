@@ -68,23 +68,23 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/jose/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(329, 329, 329)
+                .addGap(344, 344, 344)
                 .addComponent(jLabel1)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(183, 183, 183)
                 .addComponent(jLabel1)
-                .addGap(190, 190, 190))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         mnVehiculos.setText("Vehiculos");
@@ -104,6 +104,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         mnVehiculos.add(jMenuAgregarVehiculo);
 
         jMenuEditarVehiculo.setText("Editar Vehiculo");
+        jMenuEditarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEditarVehiculoActionPerformed(evt);
+            }
+        });
         mnVehiculos.add(jMenuEditarVehiculo);
 
         jMenuAnularVehiculo.setText("Anular Vehiculo");
@@ -229,6 +234,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         new FrmbuscarVehiculos().setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_jmenuBuscarVehiculoMousePressed
+
+    private void jMenuEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarVehiculoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuEditarVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
