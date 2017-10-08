@@ -5,22 +5,18 @@
  */
 package formularios;
 
-import com.sun.glass.events.KeyEvent;
-import java.awt.Component;
-import java.awt.Container;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
  * @author haru
  */
-public class FrmEditarVehiculos extends javax.swing.JFrame {
+public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
 
      
     public FrmEditarVehiculos() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
 
@@ -89,8 +85,6 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Edición de Vehículos");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cliente999\\Desktop\\Nobilis5BE48A.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -355,8 +349,8 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         btnsalir.setMinimumSize(new java.awt.Dimension(61, 23));
         btnsalir.setPreferredSize(new java.awt.Dimension(61, 23));
         btnsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnsalirMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnsalirMousePressed(evt);
             }
         });
         jPanel3.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
@@ -487,11 +481,10 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarMouseClicked
 
-    private void btnsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMouseClicked
-        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnsalirMouseClicked
+    private void btnsalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMousePressed
+        // TODO add your handling code here:
+        new FrmEditarVehiculos().setVisible(false);
+    }//GEN-LAST:event_btnsalirMousePressed
 
     /**
      * @param args the command line arguments

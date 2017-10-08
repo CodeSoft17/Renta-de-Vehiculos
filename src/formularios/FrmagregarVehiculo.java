@@ -12,12 +12,11 @@ import javax.swing.JOptionPane;
  *
  * @author Circus
  */
-public class FrmagregarVehiculo extends javax.swing.JFrame {
+public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
 
     /** Creates new form frmagregarVehiculo */
     public FrmagregarVehiculo() {
         initComponents();
-          this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
 

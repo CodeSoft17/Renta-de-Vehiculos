@@ -11,14 +11,13 @@ import java.awt.Color;
  *
  * @author CIRCUS
  */
-public class FrmbuscarVehiculos extends javax.swing.JFrame {
+public class FrmbuscarVehiculos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrmbuscarVehiculos
      */
     public FrmbuscarVehiculos() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
         

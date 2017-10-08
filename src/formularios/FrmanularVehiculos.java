@@ -11,14 +11,13 @@ import javax.swing.JOptionPane;
  *
  * @author Circus
  */
-public class FrmanularVehiculos extends javax.swing.JFrame {
+public class FrmanularVehiculos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrmanularVehiculos
      */
     public FrmanularVehiculos() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
 

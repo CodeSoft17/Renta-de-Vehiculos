@@ -68,7 +68,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/prueba.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/joe/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
