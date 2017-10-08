@@ -68,7 +68,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/prueba.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/prueba.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,19 +91,29 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         jmenuBuscarVehiculo.setText("Buscar Vehiculo");
         jmenuBuscarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmenuBuscarVehiculoMousePressed(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmenuBuscarVehiculoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jmenuBuscarVehiculoMousePressed(evt);
             }
         });
         mnVehiculos.add(jmenuBuscarVehiculo);
 
         jMenuAgregarVehiculo.setText("Agregar Vehiculo");
+        jMenuAgregarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuAgregarVehiculoMousePressed(evt);
+            }
+        });
         mnVehiculos.add(jMenuAgregarVehiculo);
 
         jMenuEditarVehiculo.setText("Editar Vehiculo");
+        jMenuEditarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEditarVehiculoMousePressed(evt);
+            }
+        });
         jMenuEditarVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuEditarVehiculoActionPerformed(evt);
@@ -112,6 +122,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         mnVehiculos.add(jMenuEditarVehiculo);
 
         jMenuAnularVehiculo.setText("Anular Vehiculo");
+        jMenuAnularVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuAnularVehiculoMousePressed(evt);
+            }
+        });
         mnVehiculos.add(jMenuAnularVehiculo);
 
         jMenuBar1.add(mnVehiculos);
@@ -239,6 +254,22 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jMenuEditarVehiculoActionPerformed
+
+    private void jMenuAgregarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAgregarVehiculoMousePressed
+        new FrmagregarVehiculo().setVisible(true);
+        this.setVisible(false);  
+       
+    }//GEN-LAST:event_jMenuAgregarVehiculoMousePressed
+
+    private void jMenuEditarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarVehiculoMousePressed
+        new FrmEditarVehiculos().setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_jMenuEditarVehiculoMousePressed
+
+    private void jMenuAnularVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAnularVehiculoMousePressed
+        new FrmanularVehiculos().setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_jMenuAnularVehiculoMousePressed
 
     /**
      * @param args the command line arguments

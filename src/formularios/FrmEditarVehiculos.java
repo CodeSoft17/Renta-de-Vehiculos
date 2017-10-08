@@ -6,6 +6,10 @@
 package formularios;
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Component;
+import java.awt.Container;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,9 +17,7 @@ import com.sun.glass.events.KeyEvent;
  */
 public class FrmEditarVehiculos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmEditarVehiculos
-     */
+     
     public FrmEditarVehiculos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -33,8 +35,8 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -42,26 +44,26 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        btnEditar1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
+        lblidclase = new javax.swing.JLabel();
+        lblNota = new javax.swing.JLabel();
+        lblplaca = new javax.swing.JLabel();
+        lblidMarca = new javax.swing.JLabel();
         cmbEleccion = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         txtbusqueda = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblimodelo = new javax.swing.JLabel();
+        lblidcolor = new javax.swing.JLabel();
+        lblestado = new javax.swing.JLabel();
+        lblidAño = new javax.swing.JLabel();
+        lblidVehiculo = new javax.swing.JLabel();
         txtidMarca = new javax.swing.JTextField();
         txtidVehiculo = new javax.swing.JTextField();
-        txtNota = new javax.swing.JTextField();
+        txtidNota = new javax.swing.JTextField();
         txtidModelo = new javax.swing.JTextField();
         txtidClase = new javax.swing.JTextField();
         txtidColor = new javax.swing.JTextField();
-        txtidAnio = new javax.swing.JTextField();
+        txtidAño = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -72,10 +74,10 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         txtPlaca = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        btnsalir = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(853, 795));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
@@ -84,11 +86,11 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(91, 228, 138));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/Nobilis5BE48A.png")); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Edición de Vehículos");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cliente999\\Desktop\\Nobilis5BE48A.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,19 +98,19 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(102, 102, 102)
+                .addComponent(jLabel3)
+                .addGap(110, 110, 110)
                 .addComponent(jLabel1)
-                .addContainerGap(752, Short.MAX_VALUE))
+                .addContainerGap(755, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel1))
-                .addGap(16, 16, 16))
+                .addGap(23, 23, 23))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 50));
@@ -118,8 +120,6 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(91, 228, 138));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("/Users/haru/NetBeansProjects/Renta-de-Vehiculos/src/recursos/Nobilis5BE48A.png")); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -184,31 +184,37 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 810, 240));
 
-        btnEditar1.setText("Editar");
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+        btnEditar.setBackground(new java.awt.Color(36, 47, 65));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
             }
         });
-        jPanel3.add(btnEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("idClase");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
+        lblidclase.setForeground(new java.awt.Color(255, 255, 255));
+        lblidclase.setText("idClase");
+        jPanel3.add(lblidclase, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Nota");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        lblNota.setForeground(new java.awt.Color(255, 255, 255));
+        lblNota.setText("Nota");
+        jPanel3.add(lblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Placa");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        lblplaca.setForeground(new java.awt.Color(255, 255, 255));
+        lblplaca.setText("Placa");
+        jPanel3.add(lblplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("idMarca");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, -1, 20));
+        lblidMarca.setForeground(new java.awt.Color(255, 255, 255));
+        lblidMarca.setText("idMarca");
+        jPanel3.add(lblidMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, -1, 20));
 
-        cmbEleccion.setBackground(new java.awt.Color(255, 255, 255));
         cmbEleccion.setForeground(new java.awt.Color(204, 204, 204));
         cmbEleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idVehiculo", "Placa", "Estado", "Año", "Modelo", "Color", "Marca" }));
         jPanel3.add(cmbEleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
@@ -219,25 +225,25 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         txtbusqueda.setBorder(null);
         jPanel3.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 150, -1));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("idmodelo");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+        lblimodelo.setForeground(new java.awt.Color(255, 255, 255));
+        lblimodelo.setText("idmodelo");
+        jPanel3.add(lblimodelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("idColor");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
+        lblidcolor.setForeground(new java.awt.Color(255, 255, 255));
+        lblidcolor.setText("idColor");
+        jPanel3.add(lblidcolor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Estado");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
+        lblestado.setForeground(new java.awt.Color(255, 255, 255));
+        lblestado.setText("Estado");
+        jPanel3.add(lblestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
 
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("idAño");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, -1, 20));
+        lblidAño.setForeground(new java.awt.Color(255, 255, 255));
+        lblidAño.setText("idAño");
+        jPanel3.add(lblidAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, -1, 20));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("idVehiculo");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        lblidVehiculo.setForeground(new java.awt.Color(255, 255, 255));
+        lblidVehiculo.setText("idVehiculo");
+        jPanel3.add(lblidVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         txtidMarca.setBackground(new java.awt.Color(36, 47, 65));
         txtidMarca.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,15 +270,15 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         });
         jPanel3.add(txtidVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 90, -1));
 
-        txtNota.setBackground(new java.awt.Color(36, 47, 65));
-        txtNota.setForeground(new java.awt.Color(255, 255, 255));
-        txtNota.setBorder(null);
-        txtNota.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtidNota.setBackground(new java.awt.Color(36, 47, 65));
+        txtidNota.setForeground(new java.awt.Color(255, 255, 255));
+        txtidNota.setBorder(null);
+        txtidNota.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNotaKeyTyped(evt);
+                txtidNotaKeyTyped(evt);
             }
         });
-        jPanel3.add(txtNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 90, 20));
+        jPanel3.add(txtidNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 90, 20));
 
         txtidModelo.setBackground(new java.awt.Color(36, 47, 65));
         txtidModelo.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,15 +312,15 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         });
         jPanel3.add(txtidColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 90, 20));
 
-        txtidAnio.setBackground(new java.awt.Color(36, 47, 65));
-        txtidAnio.setForeground(new java.awt.Color(255, 255, 255));
-        txtidAnio.setBorder(null);
-        txtidAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtidAño.setBackground(new java.awt.Color(36, 47, 65));
+        txtidAño.setForeground(new java.awt.Color(255, 255, 255));
+        txtidAño.setBorder(null);
+        txtidAño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidAnioKeyTyped(evt);
+                txtidAñoKeyTyped(evt);
             }
         });
-        jPanel3.add(txtidAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 90, 20));
+        jPanel3.add(txtidAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 90, 20));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 90, 10));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 90, 10));
         jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 90, 10));
@@ -342,6 +348,19 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponible" }));
         jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
 
+        btnsalir.setBackground(new java.awt.Color(36, 47, 65));
+        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir.setText("Salir");
+        btnsalir.setMaximumSize(new java.awt.Dimension(61, 23));
+        btnsalir.setMinimumSize(new java.awt.Dimension(61, 23));
+        btnsalir.setPreferredSize(new java.awt.Dimension(61, 23));
+        btnsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnsalirMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 800));
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,9 +383,9 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtidVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidVehiculoActionPerformed
         // TODO add your handling code here:
@@ -383,16 +402,16 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtidVehiculoKeyTyped
 
-    private void txtNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNotaKeyTyped
+    private void txtidNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidNotaKeyTyped
         // TODO add your handling code here:
         char v = evt.getKeyChar();
         if(Character.isLetter(v) || Character.isWhitespace(v)){
             evt.consume();            
         }  
-        if(this.txtNota.getText().length() == 1){
+        if(this.txtidNota.getText().length() == 1){
             evt.consume();
         }
-    }//GEN-LAST:event_txtNotaKeyTyped
+    }//GEN-LAST:event_txtidNotaKeyTyped
 
     private void txtidModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidModeloKeyTyped
         // TODO add your handling code here:
@@ -438,16 +457,16 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtidColorKeyTyped
 
-    private void txtidAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidAnioKeyTyped
+    private void txtidAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidAñoKeyTyped
         // TODO add your handling code here:
         char v = evt.getKeyChar();
         if(Character.isLetter(v) || Character.isWhitespace(v)){
             evt.consume();            
         }  
-        if(this.txtidAnio.getText().length() == 3){
+        if(this.txtidAño.getText().length() == 3){
             evt.consume();
         }
-    }//GEN-LAST:event_txtidAnioKeyTyped
+    }//GEN-LAST:event_txtidAñoKeyTyped
 
     private void txtidMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidMarcaKeyTyped
         // TODO add your handling code here:
@@ -459,6 +478,20 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtidMarcaKeyTyped
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+          if (this.txtidNota.getText().isEmpty() || this.txtidClase.getText().isEmpty() || this.txtidColor.getText().isEmpty() || this.txtidMarca.getText().isEmpty() || this.txtidModelo.getText().isEmpty() || this.txtidAño.getText().isEmpty() || this.txtPlaca.getText().isEmpty() ){
+            JOptionPane.showMessageDialog(this, "Campos vacios","Error", JOptionPane.ERROR_MESSAGE );
+            
+            
+        }
+    }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMouseClicked
+        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
+        ventana.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnsalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -486,6 +519,9 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmEditarVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -496,22 +532,14 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cmbEleccion;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -529,14 +557,23 @@ public class FrmEditarVehiculos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField txtNota;
+    private javax.swing.JLabel lblNota;
+    private javax.swing.JLabel lblestado;
+    private javax.swing.JLabel lblidAño;
+    private javax.swing.JLabel lblidMarca;
+    private javax.swing.JLabel lblidVehiculo;
+    private javax.swing.JLabel lblidclase;
+    private javax.swing.JLabel lblidcolor;
+    private javax.swing.JLabel lblimodelo;
+    private javax.swing.JLabel lblplaca;
     private javax.swing.JFormattedTextField txtPlaca;
     private javax.swing.JTextField txtbusqueda;
-    private javax.swing.JTextField txtidAnio;
+    private javax.swing.JTextField txtidAño;
     private javax.swing.JTextField txtidClase;
     private javax.swing.JTextField txtidColor;
     private javax.swing.JTextField txtidMarca;
     private javax.swing.JTextField txtidModelo;
+    private javax.swing.JTextField txtidNota;
     private javax.swing.JTextField txtidVehiculo;
     // End of variables declaration//GEN-END:variables
 }

@@ -98,7 +98,7 @@ public class FrmbuscarVehiculos extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 805, 260));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 820, 260));
 
         getContentPane().add(jPanel1);
         getContentPane().add(jSeparator1);
