@@ -431,9 +431,7 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMouseClicked
-        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.setVisible(true);
-        dispose();
+       this.dispose();
     }//GEN-LAST:event_btnsalirMouseClicked
 
     private void btnsalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMousePressed

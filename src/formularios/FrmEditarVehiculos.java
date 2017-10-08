@@ -73,8 +73,7 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         btnsalir = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
         jPanel1.setPreferredSize(new java.awt.Dimension(842, 534));
@@ -85,6 +84,8 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Edición de Vehículos");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joe\\Documents\\NetBeansProjects\\Renta-de-Vehiculos\\src\\recursos\\Nobilis5BE48A.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -483,7 +484,7 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
 
     private void btnsalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMousePressed
         // TODO add your handling code here:
-        new FrmEditarVehiculos().setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnsalirMousePressed
 
     /**

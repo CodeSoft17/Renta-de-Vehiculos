@@ -449,9 +449,7 @@ public class FrmanularVehiculos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtidModeloKeyTyped
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 
     /**

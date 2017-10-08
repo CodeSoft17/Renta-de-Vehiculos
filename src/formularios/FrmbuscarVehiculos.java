@@ -110,9 +110,7 @@ public class FrmbuscarVehiculos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbbusquedaActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-         FrmmenuPrincipal ventana = new FrmmenuPrincipal();
-        ventana.setVisible(true);
-        dispose();
+       this.dispose();
 
     }//GEN-LAST:event_btnsalirActionPerformed
 

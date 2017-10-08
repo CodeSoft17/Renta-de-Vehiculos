@@ -39,7 +39,7 @@ public class LogIn extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtusuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
+        btnlogin = new javax.swing.JPanel();
         lbllogin = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
 
@@ -79,10 +79,10 @@ public class LogIn extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(254, 254, 254));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 310, 10));
 
-        jPanel1.setBackground(new java.awt.Color(91, 228, 138));
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+        btnlogin.setBackground(new java.awt.Color(91, 228, 138));
+        btnlogin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel1FocusGained(evt);
+                btnloginFocusGained(evt);
             }
         });
 
@@ -95,23 +95,23 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnloginLayout = new javax.swing.GroupLayout(btnlogin);
+        btnlogin.setLayout(btnloginLayout);
+        btnloginLayout.setHorizontalGroup(
+            btnloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnloginLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lbllogin)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        btnloginLayout.setVerticalGroup(
+            btnloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnloginLayout.createSequentialGroup()
                 .addComponent(lbllogin)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 110, 20));
+        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 110, 20));
 
         txtpassword.setBackground(new java.awt.Color(36, 47, 65));
         txtpassword.setForeground(new java.awt.Color(254, 254, 254));
@@ -129,10 +129,10 @@ public class LogIn extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblloginMouseClicked
 
-    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+    private void btnloginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnloginFocusGained
         // TODO add your handling code here:
-        lbllogin.setBackground(Color.black);
-    }//GEN-LAST:event_jPanel1FocusGained
+        btnlogin.setBackground(Color.black);
+    }//GEN-LAST:event_btnloginFocusGained
 
     /**
      * @param args the command line arguments
@@ -170,10 +170,10 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
