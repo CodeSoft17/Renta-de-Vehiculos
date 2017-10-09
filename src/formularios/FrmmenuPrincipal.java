@@ -144,9 +144,19 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuNuevaRenta.setText("Rentas");
 
         minuevaRenta.setText("Nueva Renta");
+        minuevaRenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                minuevaRentaMousePressed(evt);
+            }
+        });
         jMenuNuevaRenta.add(minuevaRenta);
 
         jMenuBuscarRenta.setText("Buscar Renta");
+        jMenuBuscarRenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuBuscarRentaMousePressed(evt);
+            }
+        });
         jMenuNuevaRenta.add(jMenuBuscarRenta);
 
         jMenuBar1.add(jMenuNuevaRenta);
@@ -250,6 +260,20 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         desktop.add(anular);
         anular.setVisible(true);
     }//GEN-LAST:event_jMenuAnularVehiculoMousePressed
+
+    private void jMenuBuscarRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBuscarRentaMousePressed
+        // TODO add your handling code here:
+        FrmBuscarRenta rentab = new FrmBuscarRenta();
+        desktop.add(rentab);
+        rentab.setVisible(true);
+    }//GEN-LAST:event_jMenuBuscarRentaMousePressed
+
+    private void minuevaRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minuevaRentaMousePressed
+        // TODO add your handling code here:
+        FrmNuevaRenta nrenta = new FrmNuevaRenta();
+        desktop.add(nrenta);
+        nrenta.setVisible(true);
+    }//GEN-LAST:event_minuevaRentaMousePressed
 
     /**
      * @param args the command line arguments

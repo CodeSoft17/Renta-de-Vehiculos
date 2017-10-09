@@ -27,35 +27,151 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtidCliente = new javax.swing.JTextField();
+        txtidEmpleado = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cmbVehiculo = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cmbOferta = new javax.swing.JComboBox<>();
+        txtfecha = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
-        );
+        setTitle("Nueva Renta");
+
+        jPanel2.setBackground(new java.awt.Color(36, 47, 65));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("idCliente");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 20));
+
+        txtTotal.setEditable(false);
+        txtTotal.setBackground(new java.awt.Color(36, 47, 65));
+        txtTotal.setBorder(null);
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 110, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("idEmpleado");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, 20));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Vehiculo");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, 20));
+
+        txtidCliente.setBackground(new java.awt.Color(36, 47, 65));
+        txtidCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtidCliente.setBorder(null);
+        jPanel2.add(txtidCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 110, -1));
+
+        txtidEmpleado.setBackground(new java.awt.Color(36, 47, 65));
+        txtidEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        txtidEmpleado.setBorder(null);
+        jPanel2.add(txtidEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 110, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 110, 10));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Fecha");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, 20));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Total");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, 20));
+
+        cmbVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Nissan", "Mercedez", " " }));
+        jPanel2.add(cmbVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 110, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Oferta");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 20));
+
+        cmbOferta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Oferta", "10%", "20%" }));
+        jPanel2.add(cmbOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 110, -1));
+
+        txtfecha.setBackground(new java.awt.Color(36, 47, 65));
+        txtfecha.setBorder(null);
+        txtfecha.setForeground(new java.awt.Color(255, 255, 255));
+        txtfecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jPanel2.add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 110, -1));
+
+        jPanel1.setBackground(new java.awt.Color(91, 228, 138));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalirMousePressed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 70, -1));
+
+        btnGuardar.setText("Guardar");
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 450, 80));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 110, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMousePressed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cmbOferta;
+    private javax.swing.JComboBox<String> cmbVehiculo;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JFormattedTextField txtTotal;
+    private javax.swing.JFormattedTextField txtfecha;
+    private javax.swing.JTextField txtidCliente;
+    private javax.swing.JTextField txtidEmpleado;
     // End of variables declaration//GEN-END:variables
 }
