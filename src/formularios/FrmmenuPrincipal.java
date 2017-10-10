@@ -118,9 +118,19 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         mnSolicitudes.setText("Solicitudes");
 
         jMenuNuevaSolicitud.setText("Nueva Solicitud");
+        jMenuNuevaSolicitud.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuNuevaSolicitudMousePressed(evt);
+            }
+        });
         mnSolicitudes.add(jMenuNuevaSolicitud);
 
         jMenuCancelarSolicitud.setText("Cancelar Solicitud");
+        jMenuCancelarSolicitud.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuCancelarSolicitudMousePressed(evt);
+            }
+        });
         mnSolicitudes.add(jMenuCancelarSolicitud);
 
         jMenuBar1.add(mnSolicitudes);
@@ -274,6 +284,18 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         desktop.add(nrenta);
         nrenta.setVisible(true);
     }//GEN-LAST:event_minuevaRentaMousePressed
+
+    private void jMenuNuevaSolicitudMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuNuevaSolicitudMousePressed
+        FrmNuevaSolicitud nsoli = new FrmNuevaSolicitud();
+        desktop.add(nsoli);
+        nsoli.setVisible(true);
+    }//GEN-LAST:event_jMenuNuevaSolicitudMousePressed
+
+    private void jMenuCancelarSolicitudMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCancelarSolicitudMousePressed
+        FrmCancelarSolicitud csoli = new FrmCancelarSolicitud();
+        desktop.add(csoli);
+        csoli.setVisible(true);
+    }//GEN-LAST:event_jMenuCancelarSolicitudMousePressed
 
     /**
      * @param args the command line arguments

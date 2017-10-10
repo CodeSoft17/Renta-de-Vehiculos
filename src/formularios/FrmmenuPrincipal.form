@@ -53,11 +53,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nueva Solicitud"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuNuevaSolicitudMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuCancelarSolicitud">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar Solicitud"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuCancelarSolicitudMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
