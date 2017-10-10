@@ -72,25 +72,37 @@
             <Property name="text" type="java.lang.String" value="Clientes "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuNuevoCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nuevo Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuNuevoClienteMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscarCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuBuscarClienteMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuEditarCLiente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Clientes"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEditarCLienteMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuELiminarCLiente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Clientes"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuELiminarCLienteMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -39,7 +39,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuNuevaSolicitud = new javax.swing.JMenuItem();
         jMenuCancelarSolicitud = new javax.swing.JMenuItem();
         jMenuNuevoCLiente = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuNuevoCliente = new javax.swing.JMenuItem();
         jMenuBuscarCliente = new javax.swing.JMenuItem();
         jMenuEditarCLiente = new javax.swing.JMenuItem();
         jMenuELiminarCLiente = new javax.swing.JMenuItem();
@@ -137,16 +137,36 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         jMenuNuevoCLiente.setText("Clientes ");
 
-        jMenuItem1.setText("Nuevo Cliente");
-        jMenuNuevoCLiente.add(jMenuItem1);
+        jMenuNuevoCliente.setText("Nuevo Cliente");
+        jMenuNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuNuevoClienteMousePressed(evt);
+            }
+        });
+        jMenuNuevoCLiente.add(jMenuNuevoCliente);
 
         jMenuBuscarCliente.setText("Buscar Cliente");
+        jMenuBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuBuscarClienteMousePressed(evt);
+            }
+        });
         jMenuNuevoCLiente.add(jMenuBuscarCliente);
 
         jMenuEditarCLiente.setText("Editar Clientes");
+        jMenuEditarCLiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEditarCLienteMousePressed(evt);
+            }
+        });
         jMenuNuevoCLiente.add(jMenuEditarCLiente);
 
         jMenuELiminarCLiente.setText("Eliminar Clientes");
+        jMenuELiminarCLiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuELiminarCLienteMousePressed(evt);
+            }
+        });
         jMenuNuevoCLiente.add(jMenuELiminarCLiente);
 
         jMenuBar1.add(jMenuNuevoCLiente);
@@ -297,6 +317,34 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         csoli.setVisible(true);
     }//GEN-LAST:event_jMenuCancelarSolicitudMousePressed
 
+    private void jMenuELiminarCLienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuELiminarCLienteMousePressed
+        // TODO add your handling code here:
+        FrmEliminarCliente elicli = new FrmEliminarCliente();
+        desktop.add(elicli);
+        elicli.setVisible(true);
+    }//GEN-LAST:event_jMenuELiminarCLienteMousePressed
+
+    private void jMenuNuevoClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuNuevoClienteMousePressed
+        // TODO add your handling code here:
+        FrmNuevoCliente nclien = new FrmNuevoCliente();
+        desktop.add(nclien);
+        nclien.setVisible(true);
+    }//GEN-LAST:event_jMenuNuevoClienteMousePressed
+
+    private void jMenuBuscarClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBuscarClienteMousePressed
+        // TODO add your handling code here:
+        FrmBuscarCliente bcli = new FrmBuscarCliente();
+        desktop.add(bcli);
+        bcli.setVisible(true);
+    }//GEN-LAST:event_jMenuBuscarClienteMousePressed
+
+    private void jMenuEditarCLienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarCLienteMousePressed
+        // TODO add your handling code here:
+        FrmEditarCliente edcli = new FrmEditarCliente();
+        desktop.add(edcli);
+        edcli.setVisible(true);
+    }//GEN-LAST:event_jMenuEditarCLienteMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -349,11 +397,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEditarCLiente;
     private javax.swing.JMenuItem jMenuEditarProveedor;
     private javax.swing.JMenuItem jMenuEditarVehiculo;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMenuNuevaRenta;
     private javax.swing.JMenuItem jMenuNuevaSolicitud;
     private javax.swing.JMenu jMenuNuevoCLiente;
+    private javax.swing.JMenuItem jMenuNuevoCliente;
     private javax.swing.JMenu jMenuNuevoProveedor;
     private javax.swing.JMenuItem jMenuReporteCLientes;
     private javax.swing.JMenuItem jMenuReporteEmpleados;
