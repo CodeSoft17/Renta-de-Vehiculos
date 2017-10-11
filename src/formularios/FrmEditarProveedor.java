@@ -84,6 +84,7 @@ public class FrmEditarProveedor extends javax.swing.JFrame {
         lblidProveedor.setText("IdProveedor");
 
         txtidProveedor.setBackground(new java.awt.Color(36, 45, 67));
+        txtidProveedor.setForeground(new java.awt.Color(255, 255, 255));
         txtidProveedor.setBorder(null);
         txtidProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
