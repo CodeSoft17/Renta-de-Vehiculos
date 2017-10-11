@@ -101,6 +101,7 @@ public class FrmEditarProveedor extends javax.swing.JFrame {
         lblnombre.setText("Nombre:");
 
         txtnombre.setBackground(new java.awt.Color(36, 45, 67));
+        txtnombre.setForeground(new java.awt.Color(255, 255, 255));
         txtnombre.setBorder(null);
 
         lbldireccion.setBackground(new java.awt.Color(36, 45, 67));
@@ -124,6 +125,7 @@ public class FrmEditarProveedor extends javax.swing.JFrame {
         lblemail.setToolTipText("");
 
         txtemail.setBackground(new java.awt.Color(36, 45, 67));
+        txtemail.setForeground(new java.awt.Color(255, 255, 255));
         txtemail.setBorder(null);
 
         lblsitio.setBackground(new java.awt.Color(36, 45, 67));
@@ -132,6 +134,7 @@ public class FrmEditarProveedor extends javax.swing.JFrame {
         lblsitio.setText("Sitio:");
 
         txtsitio.setBackground(new java.awt.Color(36, 45, 67));
+        txtsitio.setForeground(new java.awt.Color(255, 255, 255));
         txtsitio.setBorder(null);
 
         lbltelefono.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N

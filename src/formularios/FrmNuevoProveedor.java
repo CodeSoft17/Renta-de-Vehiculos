@@ -89,6 +89,7 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
         lblidProveedor.setText("IdProveedor");
 
         txtidProveedor.setBackground(new java.awt.Color(36, 45, 67));
+        txtidProveedor.setForeground(new java.awt.Color(255, 255, 255));
         txtidProveedor.setBorder(null);
         txtidProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +107,13 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
         lblnombre.setText("Nombre:");
 
         txtnombre.setBackground(new java.awt.Color(36, 45, 67));
+        txtnombre.setForeground(new java.awt.Color(255, 255, 255));
         txtnombre.setBorder(null);
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
 
         lbldireccion.setBackground(new java.awt.Color(36, 45, 67));
         lbldireccion.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -129,6 +136,7 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
         lblemail.setToolTipText("");
 
         txtemail.setBackground(new java.awt.Color(36, 45, 67));
+        txtemail.setForeground(new java.awt.Color(255, 255, 255));
         txtemail.setBorder(null);
 
         lblsitio.setBackground(new java.awt.Color(36, 45, 67));
@@ -137,6 +145,7 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
         lblsitio.setText("Sitio:");
 
         txtsitio.setBackground(new java.awt.Color(36, 45, 67));
+        txtsitio.setForeground(new java.awt.Color(255, 255, 255));
         txtsitio.setBorder(null);
 
         lbltelefono.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -197,9 +206,9 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
             Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Jpanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addGroup(Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblidProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtidProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtidProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
@@ -300,9 +309,7 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,7 +322,7 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,6 +357,10 @@ public class FrmNuevoProveedor extends javax.swing.JFrame {
     private void txtdireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdireccionActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     /**
      * @param args the command line arguments
