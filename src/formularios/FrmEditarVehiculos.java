@@ -473,7 +473,7 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtidMarcaKeyTyped
-
+    
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
           if (this.txtidNota.getText().isEmpty() || this.txtidClase.getText().isEmpty() || this.txtidColor.getText().isEmpty() || this.txtidMarca.getText().isEmpty() || this.txtidModelo.getText().isEmpty() || this.txtidAño.getText().isEmpty() || this.txtPlaca.getText().isEmpty() ){
             JOptionPane.showMessageDialog(this, "Campos vacios","Error", JOptionPane.ERROR_MESSAGE );

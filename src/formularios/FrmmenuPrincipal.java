@@ -43,6 +43,8 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuBuscarCliente = new javax.swing.JMenuItem();
         jMenuEditarCLiente = new javax.swing.JMenuItem();
         jMenuELiminarCLiente = new javax.swing.JMenuItem();
+        jMenuGestionEmpleados = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuNuevaRenta = new javax.swing.JMenu();
         minuevaRenta = new javax.swing.JMenuItem();
         jMenuBuscarRenta = new javax.swing.JMenuItem();
@@ -170,6 +172,23 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuNuevoCLiente.add(jMenuELiminarCLiente);
 
         jMenuBar1.add(jMenuNuevoCLiente);
+
+        jMenuGestionEmpleados.setText("Empleados");
+        jMenuGestionEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuGestionEmpleadosMousePressed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Gestionar Empleaos");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
+        jMenuGestionEmpleados.add(jMenuItem1);
+
+        jMenuBar1.add(jMenuGestionEmpleados);
 
         jMenuNuevaRenta.setText("Rentas");
 
@@ -345,6 +364,18 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         edcli.setVisible(true);
     }//GEN-LAST:event_jMenuEditarCLienteMousePressed
 
+    private void jMenuGestionEmpleadosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuGestionEmpleadosMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuGestionEmpleadosMousePressed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        // TODO add your handling code here:
+        FrmGestionEmpleados gestion = new FrmGestionEmpleados();
+        desktop.add(gestion);
+        gestion.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -397,6 +428,8 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEditarCLiente;
     private javax.swing.JMenuItem jMenuEditarProveedor;
     private javax.swing.JMenuItem jMenuEditarVehiculo;
+    private javax.swing.JMenu jMenuGestionEmpleados;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMenuNuevaRenta;
     private javax.swing.JMenuItem jMenuNuevaSolicitud;
