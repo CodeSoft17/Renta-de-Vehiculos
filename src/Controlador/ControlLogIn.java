@@ -6,7 +6,7 @@
 package Controlador;
 
 import conexion.Conexion;
-import rentadevehiculosnobilis.empleado;
+import modelo.empleado;
 import java.util.*;
 import java.sql.*;
 /**
