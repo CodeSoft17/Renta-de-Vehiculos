@@ -6,6 +6,9 @@
 package formularios;
 
 import java.awt.Color;
+import rentadevehiculosnobilis.empleado;
+import Controlador.ControlLogIn;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -85,6 +88,11 @@ public class LogIn extends javax.swing.JFrame {
                 btnloginFocusGained(evt);
             }
         });
+        btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnloginMousePressed(evt);
+            }
+        });
 
         lbllogin.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         lbllogin.setForeground(new java.awt.Color(254, 254, 254));
@@ -134,6 +142,28 @@ public class LogIn extends javax.swing.JFrame {
         btnlogin.setBackground(Color.black);
     }//GEN-LAST:event_btnloginFocusGained
 
+    private void btnloginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnloginMousePressed
+    
+    public void LogIn(){
+        empleado emp = new empleado();
+        ControlLogIn control = new ControlLogIn();
+        FrmmenuPrincipal menu = new FrmmenuPrincipal();
+        try{
+            emp.setUsuario(this.txtusuario.getText().trim());
+            emp.setPassword(String.valueOf(this.txtpassword.getPassword()));
+            String mensaje = control.LogIn(emp);
+            if (mensaje.equals("LogIn Succesfull")){
+                this.dispose();
+                menu.setVisible(true);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
