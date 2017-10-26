@@ -26,24 +26,31 @@ public class ControlLogIn implements OperacionesLogIn{
     public String LogIn(Object objeto){
         Conexion con = new Conexion();
         Connection cn;
-        PreparedStatement pst;
-        String sql;
-        String mensaje = null;
+        Statement statement;
+        ResultSet rs;
+        String userNameDB = "";
+        String passwordDB = "";
         empleado emp = (empleado) objeto;
+        String mensaje = "";
+        String sql;
         try{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
-            sql = "{CALL `LogIn`(?,?)}";
-            pst = cn.prepareStatement(sql);
-            pst.setString(1, emp.getUsuario());
-            pst.setString(2, emp.getPassword());
-            pst.execute();
-            pst.close();
+            statement = cn.createStatement();
+            sql = "select usuario , password from empleado";
+            rs = statement.executeQuery(sql);
+            while(rs.next()){
+                userNameDB = rs.getString("usuario");
+                passwordDB = rs.getString("password");
+                    if(emp.getUsuario().equals(userNameDB) && emp.getPassword().equals(passwordDB)){
+                    mensaje = "Succes"; 
+                }
+            }
             cn.close();
-            mensaje = "LogIn Succesfull";
         }catch(Exception e){
-            mensaje = e.toString();
+            return e.toString();
         }
+        
         return mensaje;
     }
 }

@@ -133,8 +133,6 @@ public class LogIn extends javax.swing.JFrame {
 
     private void lblloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginMouseClicked
         // TODO add your handling code here:
-        new FrmmenuPrincipal().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_lblloginMouseClicked
 
     private void btnloginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnloginFocusGained
@@ -144,20 +142,23 @@ public class LogIn extends javax.swing.JFrame {
 
     private void btnloginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMousePressed
         // TODO add your handling code here:
-        
+        LogIn();
     }//GEN-LAST:event_btnloginMousePressed
     
     public void LogIn(){
         empleado emp = new empleado();
         ControlLogIn control = new ControlLogIn();
         FrmmenuPrincipal menu = new FrmmenuPrincipal();
+        String userValidate = "Succes";
         try{
             emp.setUsuario(this.txtusuario.getText().trim());
             emp.setPassword(String.valueOf(this.txtpassword.getPassword()));
             String mensaje = control.LogIn(emp);
-            if (mensaje.equals("LogIn Succesfull")){
+            if (userValidate.equals(mensaje)){
                 this.dispose();
                 menu.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "El usuario no existe", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
