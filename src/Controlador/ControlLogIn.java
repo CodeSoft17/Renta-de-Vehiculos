@@ -28,8 +28,9 @@ public class ControlLogIn implements OperacionesLogIn{
         Connection cn;
         Statement statement;
         ResultSet rs;
-        String userNameDB = "";
-        String passwordDB = "";
+        String userNameDB;
+        String passwordDB;
+        String cargoDB;
         empleado emp = (empleado) objeto;
         String mensaje = "";
         String sql;
@@ -37,14 +38,18 @@ public class ControlLogIn implements OperacionesLogIn{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
             statement = cn.createStatement();
-            sql = "select usuario , password from empleado";
+            sql = "select usuario, password, cargo from empleado";
             rs = statement.executeQuery(sql);
             while(rs.next()){
                 userNameDB = rs.getString("usuario");
                 passwordDB = rs.getString("password");
-                    if(emp.getUsuario().equals(userNameDB) && emp.getPassword().equals(passwordDB)){
-                    mensaje = "Succes"; 
-                }
+                cargoDB = rs.getString("cargo");
+                    if(emp.getUsuario().equals(userNameDB) && emp.getPassword().equals(passwordDB) && cargoDB.equals("Gerente")){
+                        mensaje = "Gerente"; 
+                    }else if(emp.getUsuario().equals(userNameDB) && emp.getPassword().equals(passwordDB) && cargoDB.equals("Empleado")){
+                        mensaje = "Empleado"; 
+                    }
+                     
             }
             cn.close();
         }catch(Exception e){

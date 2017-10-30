@@ -5,6 +5,10 @@
  */
 package vista;
 
+import modelo.empleado;
+import Controlador.ControlLogIn;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cliente999
@@ -48,7 +52,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuNuevaRenta = new javax.swing.JMenu();
         minuevaRenta = new javax.swing.JMenuItem();
         jMenuBuscarRenta = new javax.swing.JMenuItem();
-        jMenuNuevoProveedor = new javax.swing.JMenu();
+        jMenuProveedores = new javax.swing.JMenu();
         minuevoProveedor = new javax.swing.JMenuItem();
         jMenuBuscarProveedor = new javax.swing.JMenuItem();
         jMenuEditarProveedor = new javax.swing.JMenuItem();
@@ -64,6 +68,17 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         setTitle("Menu Principal");
         setBackground(new java.awt.Color(36, 47, 65));
         setName("frmmenuPrincipal"); // NOI18N
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        desktop.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                desktopComponentShown(evt);
+            }
+        });
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
@@ -210,7 +225,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuNuevaRenta);
 
-        jMenuNuevoProveedor.setText("Proveedores");
+        jMenuProveedores.setText("Proveedores");
 
         minuevoProveedor.setText("Nuevo Proveedor");
         minuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +233,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
                 minuevoProveedorActionPerformed(evt);
             }
         });
-        jMenuNuevoProveedor.add(minuevoProveedor);
+        jMenuProveedores.add(minuevoProveedor);
 
         jMenuBuscarProveedor.setText("Buscar Proveedor");
         jMenuBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -226,15 +241,15 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
                 jMenuBuscarProveedorActionPerformed(evt);
             }
         });
-        jMenuNuevoProveedor.add(jMenuBuscarProveedor);
+        jMenuProveedores.add(jMenuBuscarProveedor);
 
         jMenuEditarProveedor.setText("Editar Proveedor");
-        jMenuNuevoProveedor.add(jMenuEditarProveedor);
+        jMenuProveedores.add(jMenuEditarProveedor);
 
         jMenuELiminarProveedor.setText("Eliminar Proveedor");
-        jMenuNuevoProveedor.add(jMenuELiminarProveedor);
+        jMenuProveedores.add(jMenuELiminarProveedor);
 
-        jMenuBar1.add(jMenuNuevoProveedor);
+        jMenuBar1.add(jMenuProveedores);
 
         jMenuReporteVehiculos.setText("Reportes");
 
@@ -270,7 +285,29 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void validacion(){
+        empleado emp = new empleado();
+        ControlLogIn control = new ControlLogIn();
+        FrmmenuPrincipal menu = new FrmmenuPrincipal();
+        try{
+            String mensaje = control.LogIn(emp);
+            if ("Gerente".equals(mensaje)){
+                JOptionPane.showMessageDialog(this, "Bienvenido", "info", JOptionPane.INFORMATION_MESSAGE);
+            }else if("Empleado".equals(mensaje)){
+                emp.setCargo(mensaje);
+                JOptionPane.showMessageDialog(this, emp.getCargo(), "info", JOptionPane.INFORMATION_MESSAGE);
+                this.jMenuGestionEmpleados.setEnabled(false);
+                this.mnSolicitudes.setEnabled(false);
+                this.jMenuProveedores.setEnabled(false);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
     private void jMenuBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarProveedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBuscarProveedorActionPerformed
@@ -376,6 +413,16 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         gestion.setVisible(true);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
+    private void desktopComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_desktopComponentShown
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_desktopComponentShown
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        validacion();
+    }//GEN-LAST:event_formComponentShown
+    
     /**
      * @param args the command line arguments
      */
@@ -405,11 +452,12 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmmenuPrincipal().setVisible(true);
+                
             }
         });
     }
@@ -435,7 +483,7 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuNuevaSolicitud;
     private javax.swing.JMenu jMenuNuevoCLiente;
     private javax.swing.JMenuItem jMenuNuevoCliente;
-    private javax.swing.JMenu jMenuNuevoProveedor;
+    private javax.swing.JMenu jMenuProveedores;
     private javax.swing.JMenuItem jMenuReporteCLientes;
     private javax.swing.JMenuItem jMenuReporteEmpleados;
     private javax.swing.JMenuItem jMenuReporteProveedores;

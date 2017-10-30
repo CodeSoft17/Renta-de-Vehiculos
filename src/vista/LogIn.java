@@ -42,9 +42,8 @@ public class LogIn extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtusuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        btnlogin = new javax.swing.JPanel();
-        lbllogin = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
+        btnLogIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,84 +81,57 @@ public class LogIn extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(254, 254, 254));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 310, 10));
 
-        btnlogin.setBackground(new java.awt.Color(91, 228, 138));
-        btnlogin.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btnloginFocusGained(evt);
-            }
-        });
-        btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnloginMousePressed(evt);
-            }
-        });
-
-        lbllogin.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        lbllogin.setForeground(new java.awt.Color(254, 254, 254));
-        lbllogin.setText("Log in");
-        lbllogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblloginMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnloginLayout = new javax.swing.GroupLayout(btnlogin);
-        btnlogin.setLayout(btnloginLayout);
-        btnloginLayout.setHorizontalGroup(
-            btnloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnloginLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lbllogin)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        btnloginLayout.setVerticalGroup(
-            btnloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnloginLayout.createSequentialGroup()
-                .addComponent(lbllogin)
-                .addGap(0, 4, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 110, 20));
-
         txtpassword.setBackground(new java.awt.Color(36, 47, 65));
         txtpassword.setForeground(new java.awt.Color(254, 254, 254));
         txtpassword.setBorder(null);
         jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 310, -1));
+
+        btnLogIn.setText("Log In");
+        btnLogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnLogInMousePressed(evt);
+            }
+        });
+        btnLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogInActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblloginMouseClicked
+    private void btnLogInMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogInMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblloginMouseClicked
+    }//GEN-LAST:event_btnLogInMousePressed
 
-    private void btnloginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnloginFocusGained
-        // TODO add your handling code here:
-        btnlogin.setBackground(Color.black);
-    }//GEN-LAST:event_btnloginFocusGained
-
-    private void btnloginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMousePressed
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         // TODO add your handling code here:
         LogIn();
-    }//GEN-LAST:event_btnloginMousePressed
+    }//GEN-LAST:event_btnLogInActionPerformed
     
     public void LogIn(){
         empleado emp = new empleado();
-        ControlLogIn control = new ControlLogIn();
-        FrmmenuPrincipal menu = new FrmmenuPrincipal();
-        String userValidate = "Succes";
+        ControlLogIn control = new ControlLogIn();      
         try{
             emp.setUsuario(this.txtusuario.getText().trim());
             emp.setPassword(String.valueOf(this.txtpassword.getPassword()));
             String mensaje = control.LogIn(emp);
-            if (userValidate.equals(mensaje)){
+            if ("Gerente".equals(mensaje)){
+                FrmmenuPrincipal menu = new FrmmenuPrincipal();
                 this.dispose();
                 menu.setVisible(true);
+            }else if("Empleado".equals(mensaje)){
+                FrmMenuEmpleado menuEm = new FrmMenuEmpleado();
+                this.dispose();
+                menuEm.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "El usuario no existe", "Information", JOptionPane.INFORMATION_MESSAGE);
             }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -201,7 +173,7 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnlogin;
+    private javax.swing.JButton btnLogIn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -209,7 +181,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbllogin;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
