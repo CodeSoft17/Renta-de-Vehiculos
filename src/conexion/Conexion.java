@@ -59,7 +59,7 @@ public class Conexion {
     public Conexion() {
         driver = "com.mysql.jdbc.Driver";
         bd = "rentavehiculos";
-        url = "jdbc:mysql://localhost:3307/" + bd;
+        url = "jdbc:mysql://localhost:3306/" + bd;
         usuario = "root";
         clave = "";
     }
