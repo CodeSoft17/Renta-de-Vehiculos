@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import Controlador.ControlEmpleados;
 import modelo.empleado;
 import conexion.Conexion;
 import java.util.*;
@@ -141,8 +140,6 @@ public class ControlEmpleados implements OperacionesEmpleado {
             System.out.println(e);
         }
         return listaEmpleados;
-    }
-    
-    
+    }  
     
 }

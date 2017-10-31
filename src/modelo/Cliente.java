@@ -12,78 +12,78 @@ package modelo;
 public class Cliente {
     private int idCliente;
     private String nombre;
-    private int dui;
+    private String dui;
     private String tipoCliente;
-    private int nit;
+    private String nit;
     private String direccion;
-    private int telefono;
+    private String telefono;
     private String sexo;
 
     public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getDui() {
+    public String getDui() {
         return dui;
-    }
-
-    public void setDui(int dui) {
-        this.dui = dui;
     }
 
     public String getTipoCliente() {
         return tipoCliente;
     }
 
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
-    }
-
-    public int getNit() {
+    public String getNit() {
         return nit;
-    }
-
-    public void setNit(int nit) {
-        this.nit = nit;
     }
 
     public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
     }
 
     public String getSexo() {
         return sexo;
     }
 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDui(String dui) {
+        this.dui = dui;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
-    public Cliente(int idCliente, String nombre, int dui, String tipoCliente, int nit, String direccion, int telefono, String sexo) {
+    public Cliente(int idCliente, String nombre, String dui, String tipoCliente, String nit, String direccion, String telefono, String sexo) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.dui = dui;
@@ -101,6 +101,7 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", nombre=" + nombre + ", dui=" + dui + ", tipoCliente=" + tipoCliente + ", nit=" + nit + ", direccion=" + direccion + ", telefono=" + telefono + ", sexo=" + sexo + '}';
     }
+
     
     
 }
