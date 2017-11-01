@@ -228,6 +228,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuProveedores.setText("Proveedores");
 
         minuevoProveedor.setText("Nuevo Proveedor");
+        minuevoProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                minuevoProveedorMousePressed(evt);
+            }
+        });
         minuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 minuevoProveedorActionPerformed(evt);
@@ -236,6 +241,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuProveedores.add(minuevoProveedor);
 
         jMenuBuscarProveedor.setText("Buscar Proveedor");
+        jMenuBuscarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuBuscarProveedorMousePressed(evt);
+            }
+        });
         jMenuBuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuBuscarProveedorActionPerformed(evt);
@@ -244,9 +254,19 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuProveedores.add(jMenuBuscarProveedor);
 
         jMenuEditarProveedor.setText("Editar Proveedor");
+        jMenuEditarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuEditarProveedorMousePressed(evt);
+            }
+        });
         jMenuProveedores.add(jMenuEditarProveedor);
 
         jMenuELiminarProveedor.setText("Eliminar Proveedor");
+        jMenuELiminarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuELiminarProveedorMousePressed(evt);
+            }
+        });
         jMenuProveedores.add(jMenuELiminarProveedor);
 
         jMenuBar1.add(jMenuProveedores);
@@ -422,6 +442,34 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         validacion();
     }//GEN-LAST:event_formComponentShown
+
+    private void jMenuEditarProveedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarProveedorMousePressed
+        // TODO add your handling code here:
+        FrmEditarProveedor editar = new FrmEditarProveedor();
+        desktop.add(editar);
+        editar.setVisible(true);
+    }//GEN-LAST:event_jMenuEditarProveedorMousePressed
+
+    private void minuevoProveedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minuevoProveedorMousePressed
+        // TODO add your handling code here:
+        FrmNuevoProveedor agregar = new FrmNuevoProveedor();
+        desktop.add(agregar);
+        agregar.setVisible(true);
+    }//GEN-LAST:event_minuevoProveedorMousePressed
+
+    private void jMenuBuscarProveedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBuscarProveedorMousePressed
+        // TODO add your handling code here:
+        FrmBuscarProveedor buscar = new FrmBuscarProveedor();
+        desktop.add(buscar);
+        buscar.setVisible(true);
+    }//GEN-LAST:event_jMenuBuscarProveedorMousePressed
+
+    private void jMenuELiminarProveedorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuELiminarProveedorMousePressed
+        // TODO add your handling code here:
+        FrmEliminarProveedor eliminar = new FrmEliminarProveedor();
+        desktop.add(eliminar);
+        eliminar.setVisible(true);
+    }//GEN-LAST:event_jMenuELiminarProveedorMousePressed
     
     /**
      * @param args the command line arguments

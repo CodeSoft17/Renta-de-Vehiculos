@@ -157,6 +157,7 @@
                 <Property name="text" type="java.lang.String" value="Nuevo Proveedor"/>
               </Properties>
               <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="minuevoProveedorMousePressed"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minuevoProveedorActionPerformed"/>
               </Events>
             </MenuItem>
@@ -165,6 +166,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar Proveedor"/>
               </Properties>
               <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuBuscarProveedorMousePressed"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuBuscarProveedorActionPerformed"/>
               </Events>
             </MenuItem>
@@ -172,11 +174,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Proveedor"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEditarProveedorMousePressed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuELiminarProveedor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Proveedor"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuELiminarProveedorMousePressed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

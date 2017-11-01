@@ -468,8 +468,6 @@ public class FrmGestionEmpleados extends javax.swing.JInternalFrame {
         ResultSet rs;
         String sql;
         String busqueda;
-        empleado emp;
-        ArrayList<Object> listado;
        try{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());

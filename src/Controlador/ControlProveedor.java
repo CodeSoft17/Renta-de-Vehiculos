@@ -9,7 +9,6 @@ import conexion.Conexion;
 import java.util.*;
 import java.sql.*;
 import modelo.Proveedor;
-import modelo.empleado;
 
 /**
  *
@@ -28,7 +27,7 @@ public class ControlProveedor implements OperacionesProveedor{
         try{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
-            sql = "{CALL `agreagarEmpleado` (?,?,?,?,?)}";
+            sql = "{CALL `agreagarProveedor` (?,?,?,?,?)}";
             pst = cn.prepareStatement(sql);
             pst.setString(1, pro.getNombre());
             pst.setString(2, pro.getDireccion());
@@ -110,7 +109,7 @@ public class ControlProveedor implements OperacionesProveedor{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
             st = cn.createStatement();
-            sql = "{CALL `mostrarProveedores`()}";
+            sql = "{CALL `mostrarProveedor`()}";
             rs = st.executeQuery(sql);
             while(rs.next()){
                 listaProveedores.add(new Proveedor(
