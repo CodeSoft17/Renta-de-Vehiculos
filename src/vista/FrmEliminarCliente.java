@@ -5,6 +5,12 @@
  */
 package vista;
 
+import Controlador.ControlCliente;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+
 /**
  *
  * @author Jennifer
@@ -16,6 +22,7 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
      */
     public FrmEliminarCliente() {
         initComponents();
+         mostrarRegistros();
     }
 
     /**
@@ -33,10 +40,10 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
         txtidCliente2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btneli = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblcliente = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblcliente = new javax.swing.JTable();
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
@@ -77,29 +84,10 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
         btneli.setText("Eliminar");
         btneli.setBorder(null);
         btneli.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btneliMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btneliMousePressed(evt);
             }
         });
-        btneli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneliActionPerformed(evt);
-            }
-        });
-
-        tblcliente.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        tblcliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "idCliente", "Nombre", "Dui", "Tipo de cliente", "Nit", "Dirección", "Teléfono", "Sexo"
-            }
-        ));
-        tblcliente.setEnabled(false);
-        jScrollPane1.setViewportView(tblcliente);
 
         jPanel3.setBackground(new java.awt.Color(91, 228, 138));
 
@@ -125,6 +113,27 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
+        tblcliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblcliente);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,23 +148,22 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
                         .addComponent(txtidCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btneli, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
+                .addContainerGap(485, Short.MAX_VALUE)
+                .addComponent(btneli, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtidCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,9 +173,9 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btneli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,6 +192,11 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {                                         
+        // TODO add your handling code here:
+        mostrarRegistros();
+    }  
+    
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
@@ -200,15 +213,52 @@ public class FrmEliminarCliente extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnsalirMouseClicked
 
-    private void btneliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneliMouseClicked
+    private void btneliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneliMousePressed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btneliMouseClicked
+        this.eliminarDato();
+    }//GEN-LAST:event_btneliMousePressed
+    public void mostrarRegistros(){
+      String[] columnas = {"idCliente","nombre","dui","tipoCliente","nit","direccion","telefono","sexo"};
+      Object[] obj = new Object[8];
+      DefaultTableModel modelo = new DefaultTableModel (null,columnas);
+      Cliente cliente;
+      ControlCliente control = new ControlCliente();
+      ArrayList<Object>listado;
+      try{
+          listado = control.mostrarCliente();
+          for(Object objeto : listado){
+              cliente = (Cliente) objeto;
+              obj[0] = cliente.getIdCliente();
+              obj[1] = cliente.getNombre();
+              obj[2] = cliente.getDui();
+              obj[3] = cliente.getTipoCliente();
+              obj[4] = cliente.getNit();
+              obj[5] = cliente.getDireccion();
+              obj[6] = cliente.getTelefono();
+              obj[7] = cliente.getSexo();
+              modelo.addRow(obj);
+          }
+            this.tblcliente.setModel(modelo);
 
-    private void btneliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btneliActionPerformed
-
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(this, e.toString(),"Error",JOptionPane.ERROR_MESSAGE);
+      }
+    }
+    public void eliminarDato(){
+        Cliente cliente = new Cliente();
+        ControlCliente control = new ControlCliente();
+        try{
+            cliente.setIdCliente(Integer.parseInt(this.txtidCliente2.getText().trim()));
+             int respuesta = JOptionPane.showConfirmDialog(this,"¿Desea elimimar este cliente?","Eliminar",JOptionPane.INFORMATION_MESSAGE);
+              if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje  = control.eliminarCliente(cliente);
+                JOptionPane.showMessageDialog(this, mensaje,"Resultado",JOptionPane.INFORMATION_MESSAGE);
+                this.mostrarRegistros();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.toString(),"Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btneli;

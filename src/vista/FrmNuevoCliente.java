@@ -5,6 +5,10 @@
  */
 package vista;
 
+import Controlador.ControlCliente;
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+
 /**
  *
  * @author Jennifer
@@ -43,17 +47,17 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         txtidCliente = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         txttipoCliente = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jFormaDui = new javax.swing.JFormattedTextField();
+        txtdui = new javax.swing.JFormattedTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        jFormatel = new javax.swing.JFormattedTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        txttelefono = new javax.swing.JFormattedTextField();
+        cbmgenero = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtNit = new javax.swing.JFormattedTextField();
         jSeparator8 = new javax.swing.JSeparator();
@@ -74,9 +78,6 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         btnAceptar.setText("Aceptar");
         btnAceptar.setBorder(null);
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnAceptarMousePressed(evt);
             }
@@ -87,9 +88,6 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         btnSalir.setText("Salir");
         btnSalir.setBorder(null);
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalirMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnSalirMousePressed(evt);
             }
@@ -155,48 +153,48 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(null);
-        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtdireccion.setBackground(new java.awt.Color(36, 47, 65));
+        txtdireccion.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
+        txtdireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtdireccion.setBorder(null);
+        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField5KeyTyped(evt);
+                txtdireccionKeyTyped(evt);
             }
         });
 
-        jFormaDui.setBackground(new java.awt.Color(36, 47, 65));
-        jFormaDui.setBorder(null);
-        jFormaDui.setForeground(new java.awt.Color(255, 255, 255));
+        txtdui.setBackground(new java.awt.Color(36, 47, 65));
+        txtdui.setBorder(null);
+        txtdui.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jFormaDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+            txtdui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormaDui.setToolTipText("");
-        jFormaDui.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtdui.setToolTipText("");
+        txtdui.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormaDuiKeyTyped(evt);
+                txtduiKeyTyped(evt);
             }
         });
 
-        jFormatel.setBackground(new java.awt.Color(36, 47, 65));
-        jFormatel.setBorder(null);
-        jFormatel.setForeground(new java.awt.Color(255, 255, 255));
+        txttelefono.setBackground(new java.awt.Color(36, 47, 65));
+        txttelefono.setBorder(null);
+        txttelefono.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jFormatel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            txttelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormatel.addKeyListener(new java.awt.event.KeyAdapter() {
+        txttelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormatelKeyTyped(evt);
+                txttelefonoKeyTyped(evt);
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(36, 47, 65));
-        jComboBox2.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        cbmgenero.setBackground(new java.awt.Color(36, 47, 65));
+        cbmgenero.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
+        cbmgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,22 +249,22 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
                                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jFormatel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtidCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(10, 10, 10)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txttipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtidCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                    .addComponent(cbmgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(133, 133, 133)
-                                .addComponent(jFormaDui, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8))
                         .addGap(0, 85, Short.MAX_VALUE))))
         );
@@ -287,7 +285,7 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormaDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -307,24 +305,24 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jFormatel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbmgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
@@ -337,24 +335,25 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 91, Short.MAX_VALUE))
         );
 
         jLabel10.setBackground(new java.awt.Color(91, 228, 138));
@@ -382,7 +381,7 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel10)
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(420, 420, 420)
                 .addComponent(jLabel1)
@@ -412,23 +411,6 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtnombreKeyTyped
 
-    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-        //
-    }//GEN-LAST:event_btnAceptarMouseClicked
-
-    private void btnAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMousePressed
-
-    }//GEN-LAST:event_btnAceptarMousePressed
-
-    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnSalirMouseClicked
-
-    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalirMousePressed
-
     private void txtidClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidClienteKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar())){
@@ -437,13 +419,13 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtidClienteKeyTyped
 
-    private void jFormaDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormaDuiKeyTyped
+    private void txtduiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtduiKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar())){
             evt.consume();
         }  
         
-    }//GEN-LAST:event_jFormaDuiKeyTyped
+    }//GEN-LAST:event_txtduiKeyTyped
 
     private void txttipoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttipoClienteKeyTyped
         // TODO add your handling code here:
@@ -452,19 +434,19 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_txttipoClienteKeyTyped
 
-    private void jFormatelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormatelKeyTyped
+    private void txttelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttelefonoKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar())){
             evt.consume();
         } 
-    }//GEN-LAST:event_jFormatelKeyTyped
+    }//GEN-LAST:event_txttelefonoKeyTyped
 
-    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
         // TODO add your handling code here:
         if(Character.isDigit(evt.getKeyChar())){
             evt.consume();
         } 
-    }//GEN-LAST:event_jTextField5KeyTyped
+    }//GEN-LAST:event_txtdireccionKeyTyped
 
     private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
         // TODO add your handling code here:
@@ -473,13 +455,54 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_txtNitKeyTyped
 
+    private void btnAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMousePressed
+        // TODO add your handling code here:
+        this.nuevoCliente();
+    }//GEN-LAST:event_btnAceptarMousePressed
+
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMousePressed
+
+        public void nuevoCliente(){
+            Cliente cliente = new Cliente();
+            ControlCliente control = new ControlCliente();
+            try{
+            cliente.setIdCliente(Integer.parseInt(this.txtidCliente.getText().trim()));
+            cliente.setNombre(this.txtnombre.getText().trim());
+            cliente.setSexo(String.valueOf(this.cbmgenero.getSelectedItem()));
+            cliente.setDui(this.txtdui.getText());
+            cliente.setDireccion(this.txtdireccion.getText());
+            cliente.setTelefono(this.txttelefono.getText());
+            cliente.setTipoCliente(this.txttipoCliente.getText());
+            cliente.setNit(String.valueOf(this.txtNit.getText()));
+            String mensaje = control.agregarCliente(cliente);
+            JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+            this.limpiar();
+            }catch(Exception e){
+             JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+        
+        public void limpiar(){
+        this.txtnombre.setText("");
+        this.cbmgenero.setSelectedIndex(1);
+        this.txtdireccion.setText("");
+        this.txtdui.setText("");
+        this.txttelefono.setText("");
+        this.txtidCliente.setText("");
+        this.txttipoCliente.setText("");
+        this.txtNit.setText("");
+        this.txtidCliente.requestFocus();
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JFormattedTextField jFormaDui;
-    private javax.swing.JFormattedTextField jFormatel;
+    private javax.swing.JComboBox<String> cbmgenero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -501,10 +524,12 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JFormattedTextField txtNit;
+    private javax.swing.JTextField txtdireccion;
+    private javax.swing.JFormattedTextField txtdui;
     private javax.swing.JTextField txtidCliente;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JFormattedTextField txttelefono;
     private javax.swing.JTextField txttipoCliente;
     // End of variables declaration//GEN-END:variables
 }

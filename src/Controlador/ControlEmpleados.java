@@ -58,7 +58,7 @@ public class ControlEmpleados implements OperacionesEmpleado {
         String sql;
         String mensaje = null;
         empleado emp = (empleado) objeto;
-        try{
+        try {
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
             sql = "{CALL `modificarEmpleado`(?,?,?,?,?,?,?,?,?)}";
@@ -76,7 +76,7 @@ public class ControlEmpleados implements OperacionesEmpleado {
             pst.close();
             cn.close();
             mensaje = "Datos modificados correctamente";
-        }catch(Exception e){
+        } catch (Exception e) {
             mensaje = e.toString();
         }
         return mensaje;

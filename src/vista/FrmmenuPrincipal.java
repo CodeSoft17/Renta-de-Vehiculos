@@ -9,6 +9,7 @@ import modelo.empleado;
 import Controlador.ControlLogIn;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author cliente999
@@ -277,6 +278,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuReporteVehiculos.add(jMenuItem6);
 
         jMenuReporteCLientes.setText("Reporte Clientes");
+        jMenuReporteCLientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuReporteCLientesMousePressed(evt);
+            }
+        });
         jMenuReporteVehiculos.add(jMenuReporteCLientes);
 
         jMenuReporteEmpleados.setText("Reporte Empleados");
@@ -470,6 +476,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         desktop.add(eliminar);
         eliminar.setVisible(true);
     }//GEN-LAST:event_jMenuELiminarProveedorMousePressed
+
+    private void jMenuReporteCLientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuReporteCLientesMousePressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jMenuReporteCLientesMousePressed
     
     /**
      * @param args the command line arguments

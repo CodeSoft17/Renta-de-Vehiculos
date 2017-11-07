@@ -32,7 +32,6 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         txtFecha = new javax.swing.JFormattedTextField();
         cbmEmpleado = new javax.swing.JComboBox<>();
-        cbmsolicitud = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -77,12 +76,6 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
         cbmEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         cbmEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado1", "Empleado2", "Empleado3", "Empleado4", "Empleado5" }));
         cbmEmpleado.setBorder(null);
-
-        cbmsolicitud.setBackground(new java.awt.Color(36, 47, 65));
-        cbmsolicitud.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
-        cbmsolicitud.setForeground(new java.awt.Color(255, 255, 255));
-        cbmsolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitud 1", "Solicitud 2", "Solicitud 3", "Solicitud 4" }));
-        cbmsolicitud.setBorder(null);
 
         jPanel3.setBackground(new java.awt.Color(91, 228, 138));
 
@@ -182,11 +175,6 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cbmsolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -206,7 +194,7 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncancelar)
                     .addComponent(btnsalir))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -221,11 +209,6 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(cbmEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(cbmsolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -261,7 +244,6 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cbmEmpleado;
-    private javax.swing.JComboBox<String> cbmsolicitud;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JPanel jPanel1;

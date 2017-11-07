@@ -17,4 +17,5 @@ public interface OperacionesCliente {
         public String modificarCliente (Object objeto);
         public String eliminarCliente (Object objeto);
         public ArrayList <Object> mostrarCliente();
+        
 }

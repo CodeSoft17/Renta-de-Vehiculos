@@ -10,31 +10,34 @@ package modelo;
  * @author Joe
  */
 public class Vehiculo {
-    private String idVehiculo;
-    private int placa;
+    private int idVehiculo;
+    private String placa;
     private String estado;
-    private String nota;
+    private int nota;
     private int idClase;
     private int idanio;
     private int idModelo;
     private int idColor;
     private int idMarca;
 
-    public String getIdVehiculo() {
+    public int getIdVehiculo() {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(String idVehiculo) {
+    public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
 
-    public int getPlaca() {
+ 
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(int placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
+
+   
 
     public String getEstado() {
         return estado;
@@ -44,13 +47,15 @@ public class Vehiculo {
         this.estado = estado;
     }
 
-    public String getNota() {
+    public int getNota() {
         return nota;
     }
 
-    public void setNota(String nota) {
+    public void setNota(int nota) {
         this.nota = nota;
     }
+
+   
 
     public int getIdClase() {
         return idClase;
@@ -92,7 +97,7 @@ public class Vehiculo {
         this.idMarca = idMarca;
     }
 
-    public Vehiculo(String idVehiculo, int placa, String estado, String nota, int idClase, int idanio, int idModelo, int idColor, int idMarca) {
+    public Vehiculo(int idVehiculo, String placa, String estado, int nota, int idClase, int idanio, int idModelo, int idColor, int idMarca) {
         this.idVehiculo = idVehiculo;
         this.placa = placa;
         this.estado = estado;
@@ -103,6 +108,9 @@ public class Vehiculo {
         this.idColor = idColor;
         this.idMarca = idMarca;
     }
+
+ 
+ 
 
     public Vehiculo() {
     }

@@ -59,9 +59,9 @@ public class Conexion {
     public Conexion() {
         driver = "com.mysql.jdbc.Driver";
         bd = "rentavehiculos";
-        url = "jdbc:mysql://localhost:3307/" + bd;
+        url = "jdbc:mysql://localhost:3306/" + bd;
         usuario = "root";
-        clave = "";
+        clave = "root";
     }
 
     public Conexion(String driver, String bd, String url, String usuario, String clave) {

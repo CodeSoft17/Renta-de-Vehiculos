@@ -5,6 +5,19 @@
  */
 package vista;
 
+import modelo.Cliente;
+import Controlador.ControlCliente;
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+
 /**
  *
  * @author Jennifer
@@ -16,7 +29,10 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
      */
     public FrmBuscarCliente() {
         initComponents();
+         mostrarRegistros();
     }
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,9 +47,9 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcliente = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lblnombrecliente = new javax.swing.JLabel();
         btnsalir = new javax.swing.JButton();
-        txtidCliente2 = new javax.swing.JTextField();
+        txtbusqueda = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btnbuscar = new javax.swing.JButton();
 
@@ -41,41 +57,49 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(91, 228, 138));
 
-        tblcliente.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         tblcliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "idCliente", "Nombre", "Dui", "Tipo de cliente", "Nit", "Dirección", "Teléfono", "Sexo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblcliente.setEnabled(false);
+        tblcliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblclienteMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblcliente);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 822, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+            .addGap(0, 318, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jLabel1.setBackground(new java.awt.Color(36, 47, 65));
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("IdCliente");
+        lblnombrecliente.setBackground(new java.awt.Color(36, 47, 65));
+        lblnombrecliente.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
+        lblnombrecliente.setForeground(new java.awt.Color(255, 255, 255));
+        lblnombrecliente.setText("Nombre Cliente");
 
         btnsalir.setBackground(new java.awt.Color(36, 47, 65));
         btnsalir.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -93,13 +117,13 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        txtidCliente2.setBackground(new java.awt.Color(36, 47, 65));
-        txtidCliente2.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
-        txtidCliente2.setForeground(new java.awt.Color(255, 255, 255));
-        txtidCliente2.setBorder(null);
-        txtidCliente2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
+        txtbusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
+        txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        txtbusqueda.setBorder(null);
+        txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidCliente2KeyTyped(evt);
+                txtbusquedaKeyTyped(evt);
             }
         });
 
@@ -109,13 +133,8 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
         btnbuscar.setText("Buscar");
         btnbuscar.setBorder(null);
         btnbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnbuscarMouseClicked(evt);
-            }
-        });
-        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarActionPerformed(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnbuscarMousePressed(evt);
             }
         });
 
@@ -125,16 +144,16 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(290, 290, 290)
+                .addComponent(lblnombrecliente)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtidCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,10 +162,10 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtidCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblnombrecliente)
+                    .addComponent(txtbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -178,37 +197,99 @@ public class FrmBuscarCliente extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
-    private void txtidCliente2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidCliente2KeyTyped
+    private void txtbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyTyped
         // TODO add your handling code here:
-        if(!Character.isDigit(evt.getKeyChar())){
-            evt.consume();
-        } 
-    }//GEN-LAST:event_txtidCliente2KeyTyped
+    
+    }//GEN-LAST:event_txtbusquedaKeyTyped
 
     private void btnsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMouseClicked
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnsalirMouseClicked
 
-    private void btnbuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbuscarMouseClicked
+    private void btnbuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbuscarMousePressed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnbuscarMouseClicked
+        String[] columnas = {"idCliente","nombre","dui","tipoCliente","nit","direccion","telefono","sexo"};
+        Object[] obj = new Object[8];
+        DefaultTableModel modelo = new DefaultTableModel (null,columnas);
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String busqueda;
+        Cliente cli;
+        ArrayList<Object> listado;
+             try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            busqueda = this.txtbusqueda.getText();
+            sql = "select * from cliente where nombre like '" + busqueda + "%'";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                    obj[0] = rs.getString("idCliente");
+                    obj[1] = rs.getString("nombre");
+                    obj[2] = rs.getString("dui");
+                    obj[3] = rs.getString("tipoCliente");
+                    obj[4] = rs.getString("nit");
+                    obj[5] = rs.getString("direccion");
+                    obj[6] = rs.getString("telefono");
+                    obj[7] = rs.getString("sexo");
+                    
+              modelo.addRow(obj);
+            }
+            this.tblcliente.setModel(modelo);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnbuscarMousePressed
 
-    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+    private void tblclienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblclienteMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnbuscarActionPerformed
+     
+    }//GEN-LAST:event_tblclienteMousePressed
 
+          
+     public void mostrarRegistros(){
+       String[] columnas = {"idCliente","nombre","dui","tipoCliente","nit","direccion","telefono","sexo"};
+      Object[] obj = new Object[8];
+      DefaultTableModel modelo = new DefaultTableModel (null,columnas);
+      Cliente cliente;
+      ControlCliente control = new ControlCliente();
+      ArrayList<Object>listado;
+      try{
+          listado = control.mostrarCliente();
+          for(Object objeto : listado){
+              cliente = (Cliente) objeto;
+              obj[0] = cliente.getIdCliente();
+              obj[1] = cliente.getNombre();
+              obj[2] = cliente.getDui();
+              obj[3] = cliente.getTipoCliente();
+              obj[4] = cliente.getNit();
+              obj[5] = cliente.getDireccion();
+              obj[6] = cliente.getTelefono();
+              obj[7] = cliente.getSexo();
+              modelo.addRow(obj);
+          }
+            this.tblcliente.setModel(modelo);
+
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(this, e.toString(),"Error",JOptionPane.ERROR_MESSAGE);
+      }
+    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblnombrecliente;
     private javax.swing.JTable tblcliente;
-    private javax.swing.JTextField txtidCliente2;
+    private javax.swing.JTextField txtbusqueda;
     // End of variables declaration//GEN-END:variables
 }

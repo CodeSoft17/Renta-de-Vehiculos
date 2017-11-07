@@ -235,11 +235,6 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
                 btnsalirMouseClicked(evt);
             }
         });
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
-            }
-        });
 
         btnedit.setBackground(new java.awt.Color(36, 47, 65));
         btnedit.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -247,13 +242,8 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
         btnedit.setText("Editar");
         btnedit.setBorder(null);
         btnedit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btneditMouseClicked(evt);
-            }
-        });
-        btnedit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneditActionPerformed(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btneditMousePressed(evt);
             }
         });
 
@@ -301,14 +291,15 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
                                         .addGap(58, 58, 58)
                                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(txtTipoClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(txttipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(txtTipoClienteLayout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(47, 47, 47)
                                         .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 15, Short.MAX_VALUE))))
+                                .addGap(0, 15, Short.MAX_VALUE))
+                            .addGroup(txtTipoClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txttipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtTipoClienteLayout.createSequentialGroup()
                         .addGroup(txtTipoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,10 +340,10 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtTipoClienteLayout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel5)))
-                    .addGroup(txtTipoClienteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txtTipoClienteLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txttipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txtTipoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -549,18 +540,6 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnsalirMouseClicked
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnsalirActionPerformed
-
-    private void btneditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneditMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btneditMouseClicked
-
-    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btneditActionPerformed
-
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         mostrarRegistros();
@@ -570,6 +549,11 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         llenarDatos();
     }//GEN-LAST:event_tblclienteMouseClicked
+
+    private void btneditMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneditMousePressed
+        // TODO add your handling code here:
+        this.modificarDatos();
+    }//GEN-LAST:event_btneditMousePressed
     
     public void mostrarRegistros(){
       String[] columnas = {"idCliente","nombre","dui","tipoCliente","nit","direccion","telefono","sexo"};
@@ -602,7 +586,7 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
     public void llenarDatos(){
 
         try{
-            int fila = this.tblcliente.getSelectedRow();
+        int fila = this.tblcliente.getSelectedRow();
         this.txtidCliente.setText(String.valueOf(this.tblcliente.getValueAt(fila,0)));
         this.txtNombre.setText(String.valueOf(this.tblcliente.getValueAt(fila,1)));
         this.txtdui.setText(String.valueOf(this.tblcliente.getValueAt(fila, 2)));
@@ -616,7 +600,42 @@ public class FrmEditarCliente extends javax.swing.JInternalFrame {
         }
 
     }
-
+    public void modificarDatos (){
+        Cliente cliente = new Cliente();
+        ControlCliente control = new ControlCliente();
+        try{
+           cliente.setTipoCliente(this.txttipoCliente.getText().trim());
+            cliente.setIdCliente(Integer.parseInt(this.txtidCliente.getText().trim()));
+            cliente.setNombre(this.txtNombre.getText().trim());
+            cliente.setDui(this.txtdui.getText().trim());
+            cliente.setDireccion(this.txtdireccion.getText().trim());
+            cliente.setNit(this.txtNit.getText().trim());
+            cliente.setTelefono(this.txtTelefono.getText().trim());
+            cliente.setSexo(String.valueOf(this.cmbGenero.getSelectedItem()));
+            int respuesta = JOptionPane.showConfirmDialog(this,"¿Desea modificar el cliente seleccionado","Moificar",JOptionPane.INFORMATION_MESSAGE);
+            if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje  = control.modificarCliente(cliente);
+                JOptionPane.showMessageDialog(this, mensaje,"Resultado",JOptionPane.INFORMATION_MESSAGE);
+                this.mostrarRegistros();
+            }
+            this.limpiar();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this,e.toString(),"Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void limpiar(){
+        this.txtNombre.setText("");
+        this.cmbGenero.setSelectedIndex(1);
+        this.txtdireccion.setText("");
+        this.txtdui.setText("");
+        this.txtTelefono.setText("");
+        this.txtidCliente.setText("");
+        this.txttipoCliente.setText("");
+        this.txtNit.setText("");
+      
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnsalir;

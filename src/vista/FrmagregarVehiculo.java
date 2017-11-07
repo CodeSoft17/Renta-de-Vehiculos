@@ -6,7 +6,15 @@
 
 package vista;
 
+import Controlador.ControlCodigo;
+import Controlador.ControlVehiculo;
+import conexion.Conexion;
+import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.*;
+
 
 /**
  *
@@ -17,7 +25,7 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
     /** Creates new form frmagregarVehiculo */
     public FrmagregarVehiculo() {
         initComponents();
-        this.setResizable(false);
+        this.setResizable(false);    
     }
 
     /** This method is called from within the constructor to
@@ -39,21 +47,17 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         lbliAño = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        txtidColor = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        txtidMarca = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
         txtplaca = new javax.swing.JFormattedTextField();
         lblEstado = new javax.swing.JLabel();
-        txtidClase = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
         txtNota = new javax.swing.JTextField();
         lblidClase = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         cbmestado = new javax.swing.JComboBox<>();
-        txtidAño = new javax.swing.JTextField();
         cmbModelo = new javax.swing.JComboBox<>();
+        cbmcolor = new javax.swing.JComboBox<>();
+        cbmmarca = new javax.swing.JComboBox<>();
+        cbmanio = new javax.swing.JComboBox<>();
+        cbmidclase = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -108,26 +112,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         lbliAño.setForeground(new java.awt.Color(255, 255, 255));
         lbliAño.setText("idAño");
 
-        txtidColor.setBackground(new java.awt.Color(36, 47, 65));
-        txtidColor.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        txtidColor.setForeground(new java.awt.Color(255, 255, 255));
-        txtidColor.setBorder(null);
-        txtidColor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidColorKeyTyped(evt);
-            }
-        });
-
-        txtidMarca.setBackground(new java.awt.Color(36, 47, 65));
-        txtidMarca.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        txtidMarca.setForeground(new java.awt.Color(255, 255, 255));
-        txtidMarca.setBorder(null);
-        txtidMarca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidMarcaKeyTyped(evt);
-            }
-        });
-
         txtplaca.setBackground(new java.awt.Color(36, 47, 65));
         txtplaca.setBorder(null);
         txtplaca.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,16 +125,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         lblEstado.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(255, 255, 255));
         lblEstado.setText("Estado");
-
-        txtidClase.setBackground(new java.awt.Color(36, 47, 65));
-        txtidClase.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        txtidClase.setForeground(new java.awt.Color(255, 255, 255));
-        txtidClase.setBorder(null);
-        txtidClase.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidClaseKeyTyped(evt);
-            }
-        });
 
         txtNota.setBackground(new java.awt.Color(36, 47, 65));
         txtNota.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -170,13 +144,21 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         cbmestado.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         cbmestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponible" }));
 
-        txtidAño.setBackground(new java.awt.Color(36, 47, 65));
-        txtidAño.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        txtidAño.setForeground(new java.awt.Color(255, 255, 255));
-        txtidAño.setBorder(null);
-        txtidAño.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidAñoKeyTyped(evt);
+        cmbModelo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbModeloItemStateChanged(evt);
+            }
+        });
+
+        cbmcolor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbmcolorItemStateChanged(evt);
+            }
+        });
+
+        cbmmarca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbmmarcaItemStateChanged(evt);
             }
         });
 
@@ -199,26 +181,25 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbmestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cmbModelo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtidAño, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtplaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                        .addComponent(txtidMarca, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtidColor, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtplaca, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtidClase, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtNota, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cbmmarca, javax.swing.GroupLayout.Alignment.LEADING, 0, 75, Short.MAX_VALUE)
+                                .addComponent(cbmcolor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbModelo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbmanio, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbmidclase, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(53, 53, 53))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
                     .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,32 +219,28 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtidClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblidClase))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblidClase)
+                    .addComponent(cbmidclase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbliAño)
-                    .addComponent(txtidAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                    .addComponent(cbmanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(lblidModelo)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblidModelo)
-                    .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblidColor)
-                    .addComponent(txtidColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblidMarca, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtidMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbmcolor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblidMarca)
+                    .addComponent(cbmmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74))
         );
 
         jPanel3.setBackground(new java.awt.Color(91, 228, 138));
@@ -281,7 +258,7 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(75, 75, 75)
                 .addComponent(jLabel2)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,9 +277,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAgregarMousePressed(evt);
             }
         });
 
@@ -324,35 +298,35 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,33 +335,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtidColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidColorKeyTyped
-        char validar = evt.getKeyChar();
-        if(Character.isLetter(validar) || Character.isWhitespace(validar)){
-            evt.consume();
-        }  if( this.txtidColor.getText().length() == 3 ){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidColorKeyTyped
-
-    private void txtidMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidMarcaKeyTyped
-        char validar = evt.getKeyChar();
-        if(Character.isLetter(validar) || Character.isWhitespace(validar)){
-            evt.consume();
-        }  if( this.txtidMarca.getText().length() == 3 ){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidMarcaKeyTyped
-
-    private void txtidClaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidClaseKeyTyped
-        char validar = evt.getKeyChar();
-        if(Character.isLetter(validar)){
-            evt.consume();
-        }  if( this.txtidClase.getText().length() == 3 ){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidClaseKeyTyped
 
     private void txtNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNotaKeyTyped
         char validar = evt.getKeyChar();
@@ -400,25 +347,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtNotaKeyTyped
 
-    private void txtidAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidAñoKeyTyped
-        char validar = evt.getKeyChar();
-        if(Character.isLetter(validar) || Character.isWhitespace(validar)){
-            evt.consume();
-        }  if( this.txtidAño.getText().length() == 3 ){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidAñoKeyTyped
-
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        if (this.txtNota.getText().isEmpty() || this.txtidClase.getText().isEmpty() || this.txtidColor.getText().isEmpty() || this.txtidMarca.getText().isEmpty() || this.txtidAño.getText().isEmpty() || this.txtplaca.getText().isEmpty() ){
-            JOptionPane.showMessageDialog(this, "Campos vacios","Error", JOptionPane.ERROR_MESSAGE );
-        }
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-
-    }//GEN-LAST:event_btnAgregarMousePressed
-
     private void btnsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMouseClicked
        this.dispose();
     }//GEN-LAST:event_btnsalirMouseClicked
@@ -429,8 +357,184 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
+        this.llenarComboModelo();
+        this.llenarComboAnio();
+        this.llenarComboClase();
+        this.llenarComboColor();
+        this.llenarComboMarca();
+      
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void cmbModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbModeloItemStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbModeloItemStateChanged
+
+    private void cbmcolorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbmcolorItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbmcolorItemStateChanged
+
+    private void cbmmarcaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbmmarcaItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbmmarcaItemStateChanged
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        // TODO add your handling code here:
+        this.NuevoVehiculo();
+    }//GEN-LAST:event_btnAgregarMouseClicked
    
+    public void llenarComboModelo(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from modelo";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cmbModelo.addItem(name);
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void llenarComboAnio(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from anio";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                int name = rs.getInt("anio");
+                this.cbmanio.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void llenarComboClase(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from clase";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmidclase.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void llenarComboColor(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from color";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmcolor.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void llenarComboMarca(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from marca";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmmarca.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void NuevoVehiculo(){
+        Vehiculo vehiculo = new Vehiculo();
+        ControlVehiculo control = new ControlVehiculo();
+        try{
+          vehiculo.setPlaca(this.txtplaca.getText().trim());
+          vehiculo.setEstado(String.valueOf(this.cbmestado.getSelectedItem()));
+          vehiculo.setNota(Integer.parseInt(this.txtNota.getText().trim()));
+          int idClase = Integer.parseInt((String)this.cbmidclase.getSelectedItem());
+          vehiculo.setIdClase(idClase);
+          int idAnio = Integer.valueOf((String)this.cbmanio.getSelectedItem());
+          vehiculo.setIdanio(idAnio);
+          int idModelo = Integer.valueOf((String)this.cmbModelo.getSelectedItem());
+          vehiculo.setIdModelo(idModelo);
+          int idColor = Integer.valueOf((String)this.cbmcolor.getSelectedItem());
+          vehiculo.setIdColor(idColor);
+          int idMarca = Integer.valueOf((String)this.cbmmarca.getSelectedItem());
+          vehiculo.setIdMarca(idMarca);
+          String mensaje = control.agregarVehiculo(vehiculo);
+          JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+          this.limpiar();
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);  
+        }
+    }
+    public void limpiar(){
+        this.cbmestado.setSelectedIndex(0);
+        this.cbmanio.setSelectedIndex(0);
+        this.cbmcolor.setSelectedIndex(0);
+        this.cmbModelo.setSelectedIndex(0);
+        this.cbmmarca.setSelectedIndex(0);
+        this.cbmidclase.setSelectedIndex(0);
+        this.txtNota.setText("");
+        this.txtplaca.setText("P");
+        this.txtplaca.requestFocus();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -470,7 +574,11 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JComboBox<String> cbmanio;
+    private javax.swing.JComboBox<String> cbmcolor;
     private javax.swing.JComboBox<String> cbmestado;
+    private javax.swing.JComboBox<String> cbmidclase;
+    private javax.swing.JComboBox<String> cbmmarca;
     private javax.swing.JComboBox<String> cmbModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -479,10 +587,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblNota;
@@ -493,10 +597,6 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblidMarca;
     private javax.swing.JLabel lblidModelo;
     private javax.swing.JTextField txtNota;
-    private javax.swing.JTextField txtidAño;
-    private javax.swing.JTextField txtidClase;
-    private javax.swing.JTextField txtidColor;
-    private javax.swing.JTextField txtidMarca;
     private javax.swing.JFormattedTextField txtplaca;
     // End of variables declaration//GEN-END:variables
 
