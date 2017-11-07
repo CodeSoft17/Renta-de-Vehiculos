@@ -78,10 +78,10 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
         txtsitio1 = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         lbltelefono1 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JFormattedTextField();
         jSeparator11 = new javax.swing.JSeparator();
         btneditar1 = new javax.swing.JButton();
         btnsalir1 = new javax.swing.JButton();
+        txtTelefono = new javax.swing.JTextField();
         lblidProveedor1 = new javax.swing.JLabel();
         cmbProveedor1 = new javax.swing.JComboBox<>();
         lblidProveedor2 = new javax.swing.JLabel();
@@ -352,25 +352,6 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
         lbltelefono1.setForeground(new java.awt.Color(255, 255, 255));
         lbltelefono1.setText("Telefono:");
 
-        txtTelefono.setBackground(new java.awt.Color(36, 47, 65));
-        txtTelefono.setBorder(null);
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
-
         btneditar1.setBackground(new java.awt.Color(36, 45, 67));
         btneditar1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         btneditar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -392,6 +373,10 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
                 btnsalir1MousePressed(evt);
             }
         });
+
+        txtTelefono.setBackground(new java.awt.Color(36, 45, 67));
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setBorder(null);
 
         javax.swing.GroupLayout Jpanel2Layout = new javax.swing.GroupLayout(Jpanel2);
         Jpanel2.setLayout(Jpanel2Layout);
@@ -415,8 +400,8 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
                     .addComponent(jSeparator10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
                 .addGap(104, 104, 104))
             .addGroup(Jpanel2Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
@@ -453,7 +438,7 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addGroup(Jpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Jpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbltelefono1)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -592,14 +577,6 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdireccion1ActionPerformed
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoKeyTyped
-
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         llenarCombo();
@@ -682,7 +659,7 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
             pro.setSitio(this.txtsitio1.getText());
             pro.setTelefono(Integer.valueOf(this.txtTelefono.getText()));
             
-            int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificare el empleado seleccionado?", "Modificar", JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificar el proveedor seleccionado?", "Modificar", JOptionPane.YES_NO_OPTION);
             if(respuesta == JOptionPane.OK_OPTION){
                 String mensaje = control.modificarProveedor(pro);
                 JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
@@ -731,7 +708,7 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbltelefono;
     private javax.swing.JLabel lbltelefono1;
     private javax.swing.JTextField txtIdProveedor;
-    private javax.swing.JFormattedTextField txtTelefono;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtdireccion1;
     private javax.swing.JTextField txtemail;

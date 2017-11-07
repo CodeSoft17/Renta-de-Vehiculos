@@ -24,17 +24,16 @@ public class ControlVehiculo implements OperacionesVehiculo {
        try{
            Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
-            sql = "{CALL `insertarVehiculo` (?,?,?,?,?,?,?,?,?)}";
+            sql = "{CALL `insertarVehiculo` (?,?,?,?,?,?,?,?)}";
              pst = cn.prepareStatement(sql);
-             pst.setInt(1, veh.getIdVehiculo());
-             pst.setString(2, veh.getPlaca());
-             pst.setString(3, veh.getEstado());
-             pst.setInt(4, veh.getNota());
-             pst.setInt(5, veh.getIdClase());
-             pst.setInt(6, veh.getIdanio());
-             pst.setInt(7, veh.getIdModelo());
-             pst.setInt(8, veh.getIdColor());
-             pst.setInt(9, veh.getIdMarca());
+             pst.setString(1, veh.getPlaca());
+             pst.setString(2, veh.getEstado());
+             pst.setInt(3, veh.getNota());
+             pst.setInt(4, veh.getIdClase());
+             pst.setInt(5, veh.getIdanio());
+             pst.setInt(6, veh.getIdModelo());
+             pst.setInt(7, veh.getIdColor());
+             pst.setInt(8, veh.getIdMarca());
             pst.execute();
             pst.close();
             cn.close();

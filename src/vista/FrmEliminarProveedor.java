@@ -257,6 +257,7 @@ public class FrmEliminarProveedor extends javax.swing.JInternalFrame {
             if(respuesta == JOptionPane.OK_OPTION){
                 String mensaje = control.eliminarProveedor(pro);
                 JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+                buscarRegistros();
             }
         }catch(HeadlessException e){
             JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);

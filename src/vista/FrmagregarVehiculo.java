@@ -499,23 +499,68 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
         }
     }
     
+    public Integer recogerid(String busqueda, String tabla, String columna, String cmb){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String resultado = null;
+        int res = 0;
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select " + busqueda + " from " + tabla + " where " + columna + " like '" + cmb + "%'";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                resultado = rs.getString(busqueda);
+            }
+            res = Integer.valueOf(resultado);
+        }catch(ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+       return res;
+    }
+    
     public void NuevoVehiculo(){
         Vehiculo vehiculo = new Vehiculo();
         ControlVehiculo control = new ControlVehiculo();
         try{
-          vehiculo.setPlaca(this.txtplaca.getText().trim());
-          vehiculo.setEstado(String.valueOf(this.cbmestado.getSelectedItem()));
-          vehiculo.setNota(Integer.parseInt(this.txtNota.getText().trim()));
-          int idClase = Integer.parseInt((String)this.cbmidclase.getSelectedItem());
-          vehiculo.setIdClase(idClase);
-          int idAnio = Integer.valueOf((String)this.cbmanio.getSelectedItem());
-          vehiculo.setIdanio(idAnio);
-          int idModelo = Integer.valueOf((String)this.cmbModelo.getSelectedItem());
-          vehiculo.setIdModelo(idModelo);
-          int idColor = Integer.valueOf((String)this.cbmcolor.getSelectedItem());
-          vehiculo.setIdColor(idColor);
-          int idMarca = Integer.valueOf((String)this.cbmmarca.getSelectedItem());
-          vehiculo.setIdMarca(idMarca);
+          vehiculo.setPlaca(this.txtplaca.getText());
+          vehiculo.setEstado((String) this.cbmestado.getSelectedItem());
+          vehiculo.setNota(Integer.valueOf(String.valueOf(this.txtNota.getText())));
+          //Id Clase
+          String busqueda = "idClase";
+          String tabla = "clase";
+          String columna = "nombre";
+          String cmb = (String)this.cbmidclase.getSelectedItem();
+          vehiculo.setIdClase(recogerid(busqueda, tabla, columna, cmb));
+          //idanio
+          busqueda = "idanio";
+          tabla = "anio";
+          columna = "anio";
+          cmb = (String)this.cbmanio.getSelectedItem();
+          vehiculo.setIdanio(recogerid(busqueda, tabla, columna, cmb));
+          //idModelo
+          busqueda = "idModelo";
+          tabla = "modelo";
+          columna = "nombre";
+          cmb = (String)this.cmbModelo.getSelectedItem();
+          vehiculo.setIdModelo(recogerid(busqueda, tabla, columna, cmb));
+          //idColor
+          busqueda = "idColor";
+          tabla = "color";
+          columna = "nombre";
+          cmb = (String)this.cbmcolor.getSelectedItem();         
+          vehiculo.setIdColor(recogerid(busqueda, tabla, columna, cmb));
+          //idMarca
+          busqueda = "idMarca";
+          tabla = "marca";
+          columna = "nombre";
+          cmb = (String)this.cbmmarca.getSelectedItem();         
+          vehiculo.setIdMarca(recogerid(busqueda, tabla, columna, cmb));
+                   
           String mensaje = control.agregarVehiculo(vehiculo);
           JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
           this.limpiar();
