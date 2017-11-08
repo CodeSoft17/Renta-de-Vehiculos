@@ -249,9 +249,6 @@ public class FrmMenuEmpleado extends javax.swing.JFrame {
 
     private void jMenuBuscarRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBuscarRentaMousePressed
         // TODO add your handling code here:
-        FrmBuscarRenta rentab = new FrmBuscarRenta();
-        Desktop.add(rentab);
-        rentab.setVisible(true);
     }//GEN-LAST:event_jMenuBuscarRentaMousePressed
 
     /**

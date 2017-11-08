@@ -15,11 +15,11 @@ import java.sql.*;
 public class ControlVehiculo implements OperacionesVehiculo {
     @Override
     public String agregarVehiculo(Object objeto) {
-        Conexion con = new Conexion();
-        Connection cn;
-        PreparedStatement pst;
-        String sql;
-        String mensaje = null;
+       Conexion con = new Conexion();
+       Connection cn;
+       PreparedStatement pst;
+       String sql;
+       String mensaje = null;
        Vehiculo veh = (Vehiculo) objeto;
        try{
            Class.forName(con.getDriver());
@@ -43,7 +43,6 @@ public class ControlVehiculo implements OperacionesVehiculo {
        }
         return mensaje;
     }
-    
     @Override
     public String modificarVehiculo(Object objeto) {
        Conexion con = new Conexion();

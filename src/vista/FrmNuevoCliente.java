@@ -465,7 +465,7 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirMousePressed
 
-        public void nuevoCliente(){
+      public void nuevoCliente(){
             Cliente cliente = new Cliente();
             ControlCliente control = new ControlCliente();
             try{
@@ -486,7 +486,7 @@ public class FrmNuevoCliente extends javax.swing.JInternalFrame {
             }
         }
         
-        public void limpiar(){
+      public void limpiar(){
         this.txtnombre.setText("");
         this.cbmgenero.setSelectedIndex(1);
         this.txtdireccion.setText("");

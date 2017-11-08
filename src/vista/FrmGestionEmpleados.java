@@ -25,6 +25,7 @@ public class FrmGestionEmpleados extends javax.swing.JInternalFrame {
      */
     public FrmGestionEmpleados() {
         initComponents();
+        this.mostrarRegistros();
     }
 
     /**

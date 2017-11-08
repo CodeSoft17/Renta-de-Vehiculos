@@ -70,6 +70,5 @@ public class Conexion {
         this.url = url + this.bd;
         this.usuario = usuario;
         this.clave = clave;
-    }
-            
+    }           
 }
