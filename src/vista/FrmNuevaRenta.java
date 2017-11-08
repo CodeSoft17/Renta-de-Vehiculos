@@ -137,6 +137,11 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         btnEliminar.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+        });
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
 
         btnsalir.setBackground(new java.awt.Color(36, 47, 65));
@@ -372,6 +377,11 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         this.modificarRegistros();
         this.limpiar();
     }//GEN-LAST:event_jButton1MousePressed
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        // TODO add your handling code here:
+        this.eliminarRegistro();
+    }//GEN-LAST:event_btnEliminarMousePressed
     
     public void mostrarRenta(){     
         DefaultTableModel modelo = new DefaultTableModel();
@@ -450,15 +460,22 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         Renta re = new Renta();
         ControlRenta control = new ControlRenta();
         int fila;
-        fila = this.tblEmpleados.getSelectedRow();
+        fila = this.tblRenta.getSelectedRow();
         try{
             this.txtIdRenta.setText(String.valueOf(this.tblRenta.getValueAt(fila, 0)));
+            System.out.println("idRenta: " + this.txtIdRenta.getText());
             re.setIdCliente(Integer.valueOf(this.txtidCliente.getText()));
+            System.out.println("idCliente: " + this.txtidCliente.getText());
             re.setIdEmpleado(Integer.valueOf(this.txtidEmpleado.getText()));
+            System.out.println("idEmpleado: " + this.txtidEmpleado.getText());
             re.setFecha(this.txtFecha.getText());
+            System.out.println("fecha: " + this.txtFecha.getText());
             re.setTipoDePago(String.valueOf(this.cmbtipoPago.getSelectedItem()));
+            System.out.println("tdp: " + String.valueOf(this.cmbtipoPago.getSelectedItem()));
             re.setIdVehiculo(Integer.valueOf(this.txtIdVehiculo.getText()));
+            System.out.println("idVehiculo: " + this.txtIdVehiculo.getText());
             re.setTotal(Double.valueOf(this.txtTotal.getText()));
+            System.out.println("Total: " + this.txtTotal.getText());
             int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificare la renta seleccionada?", "Modificar", JOptionPane.YES_NO_OPTION);
             if(respuesta == JOptionPane.OK_OPTION){
                 String mensaje = control.modificarRenta(re);
