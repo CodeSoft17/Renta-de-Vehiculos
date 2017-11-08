@@ -42,21 +42,80 @@ public class ControlRenta implements OperacionesRenta {
             pst.execute();
             pst.close();
             cn.close();
-            mensaje = "Renta agregado exitosamente";
-        }catch(Exception e){
+            mensaje = "Renta agregada exitosamente";
+        }catch(ClassNotFoundException | SQLException e){
             mensaje = e.toString();
+        }
+        if(mensaje.equals("Renta agregada exitosamente")){
+            try{
+                Class.forName(con.getDriver());
+                cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+                sql = "{CALL `actualizarCompra` (?,?)}";
+                pst = cn.prepareStatement(sql);
+                pst.setInt(1, re.getIdVehiculo());
+                pst.setString(2, "No Disponible");
+                pst.execute();
+                pst.close();
+                cn.close();
+            }catch(ClassNotFoundException | SQLException e){
+                System.out.println(e.toString());
+            }           
         }
         return mensaje;
     }
 
     @Override
     public String modificarRenta(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        String sql;
+        String mensaje = null;
+        Renta re = (Renta) objeto;
+        try {
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "{CALL `modificarRenta`(?,?,?,?,?,?,?)}";
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1, re.getIdRenta());
+            pst.setInt(2, re.getIdCliente());
+            pst.setInt(3, re.getIdEmpleado());
+            pst.setString(4, re.getFecha());
+            pst.setString(5, re.getTipoDePago());
+            pst.setInt(6, re.getIdVehiculo());
+            pst.setDouble(7, re.getTotal());
+            pst.execute();
+            pst.close();
+            cn.close();
+            mensaje = "Datos modificados correctamente";
+        } catch (ClassNotFoundException | SQLException e) {
+            mensaje = e.toString();
+        }
+        return mensaje;
     }
 
     @Override
     public String eliminarRenta(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        String sql;
+        String mensaje = null;
+        Renta re = (Renta) objeto;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "{CALL `eliminarRenta`(?)}";
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1, re.getIdRenta());
+            pst.execute();
+            pst.close();
+            cn.close();
+            mensaje = "Renta eliminada correctamente";
+        }catch(ClassNotFoundException | SQLException e){
+            mensaje = e.toString();
+        }
+        return mensaje;
     }
 
     @Override
@@ -64,8 +123,8 @@ public class ControlRenta implements OperacionesRenta {
       Conexion con = new Conexion();
       Connection cn;
       ResultSet rs;
-      Object[] obj = new Object[9];
-      String[] columnas = {"idRenta", "Nombre Cliente", "idCliente", "Empleado", "idEmpleado", "idVehiculo", "nombre", "tipoDePago", "total"};
+      Object[] obj = new Object[10];
+      String[] columnas = {"idRenta", "Nombre Cliente", "idCliente", "Empleado", "idEmpleado", "idVehiculo", "nombre", "fecha", "tipoDePago", "total"};
       DefaultTableModel modelo = new DefaultTableModel(null, columnas);     
       String sql;
       PreparedStatement pst;
@@ -83,9 +142,10 @@ public class ControlRenta implements OperacionesRenta {
                 obj[3] = rs.getString("Empleado");
                 obj[4] = rs.getString("idEmpleado");
                 obj[5] = rs.getString("idVehiculo");
-                obj[6] = rs.getString("nombre");
-                obj[7] = rs.getString("tipoDePago");
-                obj[8] = rs.getString("total");
+                obj[6] = rs.getString("fecha");
+                obj[7] = rs.getString("nombre");
+                obj[8] = rs.getString("tipoDePago");
+                obj[9] = rs.getString("total");
                 modelo.addRow(obj);
             }
             

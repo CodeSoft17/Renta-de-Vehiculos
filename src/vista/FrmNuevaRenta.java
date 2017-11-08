@@ -5,23 +5,12 @@
  */
 package vista;
 
-import Controlador.ControlCliente;
-import Controlador.ControlEmpleados;
 import Controlador.ControlRenta;
-import conexion.Conexion;
 import java.awt.HeadlessException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Cliente;
 import modelo.Renta;
-import modelo.Vehiculo;
-import modelo.empleado;
+
 
 /**
  *
@@ -83,6 +72,8 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         txtIdVehiculo = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
+        txtIdRenta = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setTitle("Nueva Renta");
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -140,7 +131,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
                 btnnuevaMousePressed(evt);
             }
         });
-        jPanel2.add(btnnueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+        jPanel2.add(btnnueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(36, 47, 65));
         btnEliminar.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -172,8 +163,8 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
         txtbusqueda.setBorder(null);
         txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtbusquedaKeyTyped(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyPressed(evt);
             }
         });
         jPanel2.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
@@ -190,6 +181,11 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblRenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblRentaMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblRenta);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 1210, 170));
@@ -303,6 +299,19 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         txtTotal.setBorder(null);
         jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 110, 20));
 
+        txtIdRenta.setBackground(new java.awt.Color(36, 47, 65));
+        txtIdRenta.setForeground(new java.awt.Color(36, 47, 65));
+        txtIdRenta.setBorder(null);
+        jPanel2.add(txtIdRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 90, 20));
+
+        jButton1.setText("Editar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -338,13 +347,31 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
     private void btnnuevaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnuevaMousePressed
         // TODO add your handling code here:
         this.ingresarRegistros();
-        mostrarRenta();
+        this.mostrarClientes();
+        this.mostrarEmpleados();
+        this.mostrarVehiculos();
+        this.mostrarRenta();
     }//GEN-LAST:event_btnnuevaMousePressed
 
-    private void txtbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyTyped
+    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
         // TODO add your handling code here:
         this.buscarRenta();
-    }//GEN-LAST:event_txtbusquedaKeyTyped
+        this.mostrarClientes();
+        this.mostrarEmpleados();
+        this.mostrarVehiculos();
+        this.mostrarRenta();
+    }//GEN-LAST:event_txtbusquedaKeyPressed
+
+    private void tblRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRentaMousePressed
+        // TODO add your handling code here:
+        this.llenarDatos();
+    }//GEN-LAST:event_tblRentaMousePressed
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        // TODO add your handling code here:
+        this.modificarRegistros();
+        this.limpiar();
+    }//GEN-LAST:event_jButton1MousePressed
     
     public void mostrarRenta(){     
         DefaultTableModel modelo = new DefaultTableModel();
@@ -395,7 +422,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         ControlRenta control = new ControlRenta();
         try{           
             modelo = control.buscarRenta(String.valueOf(this.cmbBusqueda.getSelectedItem()), this.txtbusqueda.getText());
-            this.tblClientes.setModel(modelo);
+            this.tblRenta.setModel(modelo);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -419,7 +446,72 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         }
     }
     
+    public void modificarRegistros(){
+        Renta re = new Renta();
+        ControlRenta control = new ControlRenta();
+        int fila;
+        fila = this.tblEmpleados.getSelectedRow();
+        try{
+            this.txtIdRenta.setText(String.valueOf(this.tblRenta.getValueAt(fila, 0)));
+            re.setIdCliente(Integer.valueOf(this.txtidCliente.getText()));
+            re.setIdEmpleado(Integer.valueOf(this.txtidEmpleado.getText()));
+            re.setFecha(this.txtFecha.getText());
+            re.setTipoDePago(String.valueOf(this.cmbtipoPago.getSelectedItem()));
+            re.setIdVehiculo(Integer.valueOf(this.txtIdVehiculo.getText()));
+            re.setTotal(Double.valueOf(this.txtTotal.getText()));
+            int respuesta = JOptionPane.showConfirmDialog(this, "Desea modificare la renta seleccionada?", "Modificar", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje = control.modificarRenta(re);
+                JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+                this.mostrarRenta();
+                this.limpiar();
+            }
+            
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
+    public void eliminarRegistro(){
+        Renta re = new Renta();
+        ControlRenta control = new ControlRenta();
+        int fila;
+        fila = this.tblRenta.getSelectedRow();
+        try{
+            this.txtIdRenta.setText(String.valueOf(this.tblRenta.getValueAt(fila, 0)));
+            re.setIdRenta(Integer.parseInt(this.txtIdRenta.getText()));
+            int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar la renta seleccionada?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje = control.eliminarRenta(re);
+                JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+                this.mostrarRenta();
+            }
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarDatos(){
+        int fila = this.tblRenta.getSelectedRow();
+        this.txtIdRenta.setText(String.valueOf(this.tblRenta.getValueAt(fila, 0)));      
+        this.txtidCliente.setText(String.valueOf(this.tblRenta.getValueAt(fila, 2))); 
+        this.txtidEmpleado.setText(String.valueOf(this.tblRenta.getValueAt(fila, 4))); 
+        this.txtFecha.setText(String.valueOf(this.tblRenta.getValueAt(fila, 7))); 
+        this.cmbtipoPago.setSelectedItem(String.valueOf(this.tblRenta.getValueAt(fila, 8))); 
+        this.txtIdVehiculo.setText(String.valueOf(this.tblRenta.getValueAt(fila, 5))); 
+        this.txtTotal.setText(String.valueOf(this.tblRenta.getValueAt(fila, 9)));
+    }
+    
+    public void limpiar(){
+        this.txtIdRenta.setText("");
+        this.txtidCliente.setText("");
+        this.txtidEmpleado.setText("");
+        this.txtFecha.setText("");
+        this.txtTotal.setText("");
+        this.txtbusqueda.setText("");
+        this.txtIdVehiculo.setText("");
+        this.cmbBusqueda.setSelectedIndex(0);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
@@ -427,6 +519,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnsalir;
     private javax.swing.JComboBox<String> cmbBusqueda;
     private javax.swing.JComboBox<String> cmbtipoPago;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -453,6 +546,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblRenta;
     private javax.swing.JTable tblVehiculos;
     private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtIdRenta;
     private javax.swing.JTextField txtIdVehiculo;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtbusqueda;
