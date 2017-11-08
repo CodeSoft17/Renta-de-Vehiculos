@@ -51,7 +51,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuNuevaRenta = new javax.swing.JMenu();
         minuevaRenta = new javax.swing.JMenuItem();
-        jMenuBuscarRenta = new javax.swing.JMenuItem();
         jMenuProveedores = new javax.swing.JMenu();
         minuevoProveedor = new javax.swing.JMenuItem();
         jMenuBuscarProveedor = new javax.swing.JMenuItem();
@@ -199,21 +198,13 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
         jMenuNuevaRenta.setText("Rentas");
 
-        minuevaRenta.setText("Nueva Renta");
+        minuevaRenta.setText("Gestion de Rentas");
         minuevaRenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 minuevaRentaMousePressed(evt);
             }
         });
         jMenuNuevaRenta.add(minuevaRenta);
-
-        jMenuBuscarRenta.setText("Buscar Renta");
-        jMenuBuscarRenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuBuscarRentaMousePressed(evt);
-            }
-        });
-        jMenuNuevaRenta.add(jMenuBuscarRenta);
 
         jMenuBar1.add(jMenuNuevaRenta);
 
@@ -356,10 +347,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         desktop.add(anular);
         anular.setVisible(true);
     }//GEN-LAST:event_jMenuAnularVehiculoMousePressed
-
-    private void jMenuBuscarRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBuscarRentaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuBuscarRentaMousePressed
 
     private void minuevaRentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minuevaRentaMousePressed
         // TODO add your handling code here:
@@ -509,7 +496,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuBuscarCliente;
     private javax.swing.JMenuItem jMenuBuscarProveedor;
-    private javax.swing.JMenuItem jMenuBuscarRenta;
     private javax.swing.JMenuItem jMenuCancelarSolicitud;
     private javax.swing.JMenuItem jMenuELiminarCLiente;
     private javax.swing.JMenuItem jMenuELiminarProveedor;

@@ -119,7 +119,7 @@ public class ControlCliente implements OperacionesCliente {
            Class.forName(con.getDriver());
            cn = DriverManager.getConnection(con.getUrl(),con.getUsuario(),con.getClave());
            st = cn.createStatement();
-           sentencia = "{Call mostrarCliente()}";
+           sentencia = "{Call `mostrarClientes`()}";
            rs = st.executeQuery(sentencia);
            while(rs.next()){
                listaClientes.add(new Cliente(

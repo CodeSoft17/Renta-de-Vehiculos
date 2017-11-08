@@ -123,18 +123,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="minuevaRenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nueva Renta"/>
+                <Property name="text" type="java.lang.String" value="Gestion de Rentas"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="minuevaRentaMousePressed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscarRenta">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar Renta"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuBuscarRentaMousePressed"/>
               </Events>
             </MenuItem>
           </SubComponents>

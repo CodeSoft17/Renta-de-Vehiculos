@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Joe
@@ -14,8 +16,22 @@ public class Renta {
     private int idCliente;
     private int idEmpleado;
     private String fecha;
-    private int correlativo;
-    private String tipoPago;
+    private String tipoDePago;
+    private int idVehiculo;
+    private double total;
+
+    public Renta(int idRenta, int idCliente, int idEmpleado, String fecha, String tipoDePago, int idVehiculo, double total) {
+        this.idRenta = idRenta;
+        this.idCliente = idCliente;
+        this.idEmpleado = idEmpleado;
+        this.fecha = fecha;
+        this.tipoDePago = tipoDePago;
+        this.idVehiculo = idVehiculo;
+        this.total = total;
+    }
+
+    public Renta() {
+    }
 
     public int getIdRenta() {
         return idRenta;
@@ -49,38 +65,33 @@ public class Renta {
         this.fecha = fecha;
     }
 
-    public int getCorrelativo() {
-        return correlativo;
+    public String getTipoDePago() {
+        return tipoDePago;
     }
 
-    public void setCorrelativo(int correlativo) {
-        this.correlativo = correlativo;
+    public void setTipoDePago(String tipoDePago) {
+        this.tipoDePago = tipoDePago;
     }
 
-    public String getTipoPago() {
-        return tipoPago;
+    public int getIdVehiculo() {
+        return idVehiculo;
     }
 
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
+    public void setIdVehiculo(int idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
 
-    public Renta(int idRenta, int idCliente, int idEmpleado, String fecha, int correlativo, String tipoPago) {
-        this.idRenta = idRenta;
-        this.idCliente = idCliente;
-        this.idEmpleado = idEmpleado;
-        this.fecha = fecha;
-        this.correlativo = correlativo;
-        this.tipoPago = tipoPago;
+    public double getTotal() {
+        return total;
     }
 
-    public Renta() {
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     @Override
     public String toString() {
-        return "Renta{" + "idRenta=" + idRenta + ", idCliente=" + idCliente + ", idEmpleado=" + idEmpleado + ", fecha=" + fecha + ", correlativo=" + correlativo + ", tipoPago=" + tipoPago + '}';
+        return "Renta{" + "idRenta=" + idRenta + ", idCliente=" + idCliente + ", idEmpleado=" + idEmpleado + ", fecha=" + fecha + ", tipoDePago=" + tipoDePago + ", idVehiculo=" + idVehiculo + ", total=" + total + '}';
     }
-    
-    
+      
 }

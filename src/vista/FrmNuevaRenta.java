@@ -5,6 +5,24 @@
  */
 package vista;
 
+import Controlador.ControlCliente;
+import Controlador.ControlEmpleados;
+import Controlador.ControlRenta;
+import conexion.Conexion;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+import modelo.Renta;
+import modelo.Vehiculo;
+import modelo.empleado;
+
 /**
  *
  * @author joe
@@ -31,9 +49,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        lbltipoPago = new javax.swing.JLabel();
         txtidCliente = new javax.swing.JTextField();
         txtidEmpleado = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -42,9 +58,6 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cmbtipoPago = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        cmbOferta = new javax.swing.JComboBox<>();
-        txtfecha = new javax.swing.JFormattedTextField();
         jSeparator4 = new javax.swing.JSeparator();
         btnnueva = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -54,9 +67,29 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         txtbusqueda = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblRenta = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        lbltipoPago1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblEmpleados = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblClientes = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblVehiculos = new javax.swing.JTable();
+        txtIdVehiculo = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
 
         setTitle("Nueva Renta");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(36, 47, 65));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,22 +99,10 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         jLabel2.setText("idCliente");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, 20));
 
-        txtTotal.setEditable(false);
-        txtTotal.setBackground(new java.awt.Color(36, 47, 65));
-        txtTotal.setBorder(null);
-        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
-        txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 110, -1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("idEmpleado");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 20));
-
-        lbltipoPago.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbltipoPago.setForeground(new java.awt.Color(255, 255, 255));
-        lbltipoPago.setText("Tipo de Pago");
-        jPanel2.add(lbltipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, 20));
 
         txtidCliente.setBackground(new java.awt.Color(36, 47, 65));
         txtidCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,7 +114,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         txtidEmpleado.setBorder(null);
         jPanel2.add(txtidEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 110, -1));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 110, 10));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 110, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 110, 10));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 10));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -103,31 +124,22 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Total");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, 20));
+        jLabel6.setText("idVehiculo");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, 20));
 
         cmbtipoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta de Credito", " " }));
         jPanel2.add(cmbtipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 110, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Oferta");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, 20));
-
-        cmbOferta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Oferta", "10%", "20%" }));
-        jPanel2.add(cmbOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 110, -1));
-
-        txtfecha.setBackground(new java.awt.Color(36, 47, 65));
-        txtfecha.setBorder(null);
-        txtfecha.setForeground(new java.awt.Color(255, 255, 255));
-        txtfecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jPanel2.add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 110, -1));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 110, 10));
 
         btnnueva.setBackground(new java.awt.Color(36, 47, 65));
         btnnueva.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnnueva.setForeground(new java.awt.Color(255, 255, 255));
         btnnueva.setText("Nueva");
+        btnnueva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnnuevaMousePressed(evt);
+            }
+        });
         jPanel2.add(btnnueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(36, 47, 65));
@@ -150,19 +162,19 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Seleccione una forma de busqueda");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idCliente", "idEmpleado", "Tipo de Pago", " " }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
         txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
         txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
         txtbusqueda.setBorder(null);
-        jPanel2.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 110, -1));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 110, 10));
+        jPanel2.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 110, 10));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -173,15 +185,124 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblRenta);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 710, 160));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 1210, 170));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Total");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, 20));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 110, 10));
+
+        lbltipoPago1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbltipoPago1.setForeground(new java.awt.Color(255, 255, 255));
+        lbltipoPago1.setText("Tipo de Pago");
+        jPanel2.add(lbltipoPago1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, 20));
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MousePressed(evt);
+            }
+        });
+
+        tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tblEmpleados);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Empleados", jPanel1);
+
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(tblClientes);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 203, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Clientes", jPanel3);
+
+        tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblVehiculos);
+
+        jTabbedPane1.addTab("Vehiculos", jScrollPane3);
+
+        jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 540, 220));
+
+        txtIdVehiculo.setBackground(new java.awt.Color(36, 47, 65));
+        txtIdVehiculo.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdVehiculo.setBorder(null);
+        jPanel2.add(txtIdVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 110, 20));
+
+        txtFecha.setBackground(new java.awt.Color(36, 47, 65));
+        txtFecha.setForeground(new java.awt.Color(255, 255, 255));
+        txtFecha.setBorder(null);
+        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 20));
+
+        txtTotal.setBackground(new java.awt.Color(36, 47, 65));
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotal.setBorder(null);
+        jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 110, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1235, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,12 +317,91 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnsalirMouseClicked
 
+    private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MousePressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTabbedPane1MousePressed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        this.mostrarClientes();
+        this.mostrarEmpleados();
+        this.mostrarVehiculos();
+        this.mostrarRenta();
+    }//GEN-LAST:event_formComponentShown
+
+    private void btnnuevaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnuevaMousePressed
+        // TODO add your handling code here:
+        this.ingresarRegistros();
+        mostrarRenta();
+    }//GEN-LAST:event_btnnuevaMousePressed
+    
+    public void mostrarRenta(){     
+        DefaultTableModel modelo = new DefaultTableModel();
+        ControlRenta control = new ControlRenta();
+        try{
+            modelo = control.mostrarRenta();
+            this.tblRenta.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void mostrarVehiculos(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        ControlRenta control = new ControlRenta();
+        try{
+            modelo = control.mostrarVehiculos();
+            this.tblVehiculos.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void mostrarEmpleados(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        ControlRenta control = new ControlRenta();
+        try{
+            modelo = control.mostrarEmpleados();
+            this.tblEmpleados.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void mostrarClientes(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        ControlRenta control = new ControlRenta();
+        try{
+            modelo = control.mostrarClientes();
+            this.tblClientes.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void ingresarRegistros(){
+        Renta re = new Renta();
+        ControlRenta control = new ControlRenta();
+        try{
+            re.setIdCliente(Integer.valueOf(this.txtidCliente.getText()));
+            re.setIdEmpleado(Integer.valueOf(this.txtidEmpleado.getText()));           
+            re.setFecha(String.valueOf(this.txtFecha.getText()));            
+            re.setTipoDePago(String.valueOf(this.cmbtipoPago.getSelectedItem()));           
+            re.setIdVehiculo(Integer.parseInt(this.txtIdVehiculo.getText()));           
+            re.setTotal(Double.valueOf(this.txtTotal.getText()));
+                        
+            String mensaje = control.agregarRenta(re);
+            JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnnueva;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JComboBox<String> cmbOferta;
     private javax.swing.JComboBox<String> cmbtipoPago;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -209,19 +409,30 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lbltipoPago;
-    private javax.swing.JFormattedTextField txtTotal;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbltipoPago1;
+    private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblEmpleados;
+    private javax.swing.JTable tblRenta;
+    private javax.swing.JTable tblVehiculos;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtIdVehiculo;
+    private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtbusqueda;
-    private javax.swing.JFormattedTextField txtfecha;
     private javax.swing.JTextField txtidCliente;
     private javax.swing.JTextField txtidEmpleado;
     // End of variables declaration//GEN-END:variables
