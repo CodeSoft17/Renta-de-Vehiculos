@@ -142,8 +142,8 @@ public class ControlRenta implements OperacionesRenta {
                 obj[3] = rs.getString("Empleado");
                 obj[4] = rs.getString("idEmpleado");
                 obj[5] = rs.getString("idVehiculo");
-                obj[6] = rs.getString("fecha");
-                obj[7] = rs.getString("nombre");
+                obj[6] = rs.getString("nombre");
+                obj[7] = rs.getString("fecha");
                 obj[8] = rs.getString("tipoDePago");
                 obj[9] = rs.getString("total");
                 modelo.addRow(obj);
