@@ -65,7 +65,7 @@ public class ControlRenta implements OperacionesRenta {
       Connection cn;
       ResultSet rs;
       Object[] obj = new Object[9];
-      String[] columnas = {"idRenta", "Nombre Cliente", "telefono", "Nombre Empleado", "fecha", "tipoDePago", "total"};
+      String[] columnas = {"idRenta", "Nombre Cliente", "idCliente", "Empleado", "idEmpleado", "idVehiculo", "nombre", "tipoDePago", "total"};
       DefaultTableModel modelo = new DefaultTableModel(null, columnas);     
       String sql;
       PreparedStatement pst;
@@ -73,17 +73,19 @@ public class ControlRenta implements OperacionesRenta {
       try{
             Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
-            sql = "select * from rentavista";
+            sql = "select * from rentaVista";
             pst = cn.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()){
                 obj[0] = rs.getString("idRenta");
                 obj[1] = rs.getString("Nombre Cliente");
-                obj[2] = rs.getString("telefono");
-                obj[3] = rs.getString("Nombre Empleado");
-                obj[4] = rs.getString("fecha");
-                obj[5] = rs.getString("tipoDePago");
-                obj[6] = rs.getString("total");
+                obj[2] = rs.getString("idCliente");
+                obj[3] = rs.getString("Empleado");
+                obj[4] = rs.getString("idEmpleado");
+                obj[5] = rs.getString("idVehiculo");
+                obj[6] = rs.getString("nombre");
+                obj[7] = rs.getString("tipoDePago");
+                obj[8] = rs.getString("total");
                 modelo.addRow(obj);
             }
             
