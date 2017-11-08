@@ -568,6 +568,7 @@ public class FrmagregarVehiculo extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);  
         }
     }
+    
     public void limpiar(){
         this.cbmestado.setSelectedIndex(0);
         this.cbmanio.setSelectedIndex(0);

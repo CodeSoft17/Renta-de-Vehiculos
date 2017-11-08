@@ -9,14 +9,6 @@
             <Property name="text" type="java.lang.String" value="Vehiculos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmenuBuscarVehiculo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar Vehiculo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmenuBuscarVehiculoMousePressed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuAgregarVehiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Vehiculo"/>

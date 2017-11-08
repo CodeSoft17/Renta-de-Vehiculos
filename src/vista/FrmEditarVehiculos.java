@@ -6,7 +6,18 @@
 package vista;
 
 
+import Controlador.ControlVehiculo;
+import conexion.Conexion;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Vehiculo;
 
 /**
  *
@@ -38,8 +49,6 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
         lblidclase = new javax.swing.JLabel();
         lblNota = new javax.swing.JLabel();
@@ -53,27 +62,42 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         lblestado = new javax.swing.JLabel();
         lblidAño = new javax.swing.JLabel();
         lblidVehiculo = new javax.swing.JLabel();
-        txtidMarca = new javax.swing.JTextField();
         txtidVehiculo = new javax.swing.JTextField();
-        txtidNota = new javax.swing.JTextField();
-        txtidModelo = new javax.swing.JTextField();
-        txtidClase = new javax.swing.JTextField();
-        txtidColor = new javax.swing.JTextField();
-        txtidAño = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        txtPlaca = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
-        jSeparator10 = new javax.swing.JSeparator();
-        txtPlaca = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbmAnio = new javax.swing.JComboBox<>();
         btnsalir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEditar = new javax.swing.JTable();
+        cmbEstado = new javax.swing.JComboBox<>();
+        cbmModelo = new javax.swing.JComboBox<>();
+        cbmClase = new javax.swing.JComboBox<>();
+        cbmColor = new javax.swing.JComboBox<>();
+        cbmMarca = new javax.swing.JComboBox<>();
+        txtidNota1 = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
         jPanel1.setPreferredSize(new java.awt.Dimension(842, 534));
@@ -84,8 +108,6 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Edición de Vehículos");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joe\\Documents\\NetBeansProjects\\Renta-de-Vehiculos\\src\\recursos\\Nobilis5BE48A.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -149,42 +171,14 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         jLabel10.setText("Seleccione una opción de búsqueda");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 330, 20));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "idVehiculo", "Placa", "Estado", "Nota", "idClase", "idAño", "idModelo", "idColor", "idMarca"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 810, 240));
-
         btnEditar.setBackground(new java.awt.Color(36, 47, 65));
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEditarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEditarMousePressed(evt);
             }
         });
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +186,7 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
                 btnEditarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        jPanel3.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 70, -1));
 
         lblidclase.setForeground(new java.awt.Color(255, 255, 255));
         lblidclase.setText("idClase");
@@ -218,6 +212,11 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
         txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
         txtbusqueda.setBorder(null);
+        txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 150, -1));
 
         lblimodelo.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,16 +239,6 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         lblidVehiculo.setText("idVehiculo");
         jPanel3.add(lblidVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
-        txtidMarca.setBackground(new java.awt.Color(36, 47, 65));
-        txtidMarca.setForeground(new java.awt.Color(255, 255, 255));
-        txtidMarca.setBorder(null);
-        txtidMarca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidMarcaKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 90, 20));
-
         txtidVehiculo.setBackground(new java.awt.Color(36, 47, 65));
         txtidVehiculo.setForeground(new java.awt.Color(255, 255, 255));
         txtidVehiculo.setBorder(null);
@@ -265,86 +254,22 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         });
         jPanel3.add(txtidVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 90, -1));
 
-        txtidNota.setBackground(new java.awt.Color(36, 47, 65));
-        txtidNota.setForeground(new java.awt.Color(255, 255, 255));
-        txtidNota.setBorder(null);
-        txtidNota.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidNotaKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 90, 20));
-
-        txtidModelo.setBackground(new java.awt.Color(36, 47, 65));
-        txtidModelo.setForeground(new java.awt.Color(255, 255, 255));
-        txtidModelo.setBorder(null);
-        txtidModelo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidModeloKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, 20));
-
-        txtidClase.setBackground(new java.awt.Color(36, 47, 65));
-        txtidClase.setForeground(new java.awt.Color(255, 255, 255));
-        txtidClase.setToolTipText("");
-        txtidClase.setBorder(null);
-        txtidClase.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidClaseKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 90, 20));
-
-        txtidColor.setBackground(new java.awt.Color(36, 47, 65));
-        txtidColor.setForeground(new java.awt.Color(255, 255, 255));
-        txtidColor.setToolTipText("");
-        txtidColor.setBorder(null);
-        txtidColor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidColorKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 90, 20));
-
-        txtidAño.setBackground(new java.awt.Color(36, 47, 65));
-        txtidAño.setForeground(new java.awt.Color(255, 255, 255));
-        txtidAño.setBorder(null);
-        txtidAño.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtidAñoKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtidAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 90, 20));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 90, 10));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 90, 10));
-        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 90, 10));
-        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 90, 10));
-        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 90, 10));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 90, 10));
-        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 90, -1));
-        jPanel3.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 90, 10));
-
         txtPlaca.setBackground(new java.awt.Color(36, 47, 65));
-        txtPlaca.setBorder(null);
         txtPlaca.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            txtPlaca.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("P### ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txtPlaca.setBorder(null);
         txtPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPlacaKeyTyped(evt);
             }
         });
-        jPanel3.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 90, -1));
+        jPanel3.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 100, 20));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 90, 10));
+        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 90, 10));
+        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 90, 10));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponible" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
+        jPanel3.add(cbmAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 120, -1));
 
         btnsalir.setBackground(new java.awt.Color(36, 47, 65));
-        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
         btnsalir.setText("Salir");
         btnsalir.setMaximumSize(new java.awt.Dimension(61, 23));
         btnsalir.setMinimumSize(new java.awt.Dimension(61, 23));
@@ -354,7 +279,56 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
                 btnsalirMousePressed(evt);
             }
         });
-        jPanel3.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
+        jPanel3.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 70, -1));
+
+        tblEditar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblEditarMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblEditar);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 830, 270));
+
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponible" }));
+        jPanel3.add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
+
+        jPanel3.add(cbmModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 130, -1));
+
+        jPanel3.add(cbmClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 140, -1));
+
+        jPanel3.add(cbmColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 150, -1));
+
+        jPanel3.add(cbmMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 120, -1));
+
+        txtidNota1.setBackground(new java.awt.Color(36, 47, 65));
+        txtidNota1.setForeground(new java.awt.Color(255, 255, 255));
+        txtidNota1.setBorder(null);
+        txtidNota1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtidNota1KeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtidNota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 90, 20));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+        });
+        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 800));
 
@@ -397,89 +371,19 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtidVehiculoKeyTyped
 
-    private void txtidNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidNotaKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidNota.getText().length() == 1){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidNotaKeyTyped
-
-    private void txtidModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidModeloKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidModelo.getText().length() == 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidModeloKeyTyped
-
     private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
         // TODO add your handling code here:
         char v = evt.getKeyChar();
         if(Character.isLetter(v) || Character.isWhitespace(v)){
             evt.consume();            
         }  
-        if(this.txtPlaca.getText().length() == 7){
+        if(this.txtPlaca.getText().length() == 1){
             evt.consume();
         }
     }//GEN-LAST:event_txtPlacaKeyTyped
-
-    private void txtidClaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidClaseKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidClase.getText().length() == 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidClaseKeyTyped
-
-    private void txtidColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidColorKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidColor.getText().length() == 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidColorKeyTyped
-
-    private void txtidAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidAñoKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidAño.getText().length() == 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidAñoKeyTyped
-
-    private void txtidMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidMarcaKeyTyped
-        // TODO add your handling code here:
-        char v = evt.getKeyChar();
-        if(Character.isLetter(v) || Character.isWhitespace(v)){
-            evt.consume();            
-        }  
-        if(this.txtidMarca.getText().length() == 3){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtidMarcaKeyTyped
     
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-          if (this.txtidNota.getText().isEmpty() || this.txtidClase.getText().isEmpty() || this.txtidColor.getText().isEmpty() || this.txtidMarca.getText().isEmpty() || this.txtidModelo.getText().isEmpty() || this.txtidAño.getText().isEmpty() || this.txtPlaca.getText().isEmpty() ){
-            JOptionPane.showMessageDialog(this, "Campos vacios","Error", JOptionPane.ERROR_MESSAGE );
-            
-            
-        }
+         
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnsalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalirMousePressed
@@ -487,6 +391,352 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnsalirMousePressed
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        mostrarRegistros();
+        llenarComboMarca();
+        llenarComboColor();
+        llenarComboAnio();
+        llenarComboModelo();
+        llenarComboClase();
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void tblEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEditarMousePressed
+        // TODO add your handling code here:
+        llenarDatos();
+    }//GEN-LAST:event_tblEditarMousePressed
+
+    private void txtbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyTyped
+        // TODO add your handling code here:
+        buscar();
+    }//GEN-LAST:event_txtbusquedaKeyTyped
+
+    private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
+        // TODO add your handling code here:
+        editarVehiculo();
+        mostrarRegistros();
+    }//GEN-LAST:event_btnEditarMousePressed
+
+    private void txtidNota1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidNota1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidNota1KeyTyped
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        // TODO add your handling code here:
+        eliminarRegistro();
+        mostrarRegistros();
+        limpiar();
+    }//GEN-LAST:event_btnEliminarMousePressed
+    
+    public void eliminarRegistro(){
+        Vehiculo ve = new Vehiculo();
+        ControlVehiculo control = new ControlVehiculo();
+        int fila;
+        fila = this.tblEditar.getSelectedRow();
+        try{
+            this.txtidVehiculo.setText(String.valueOf(this.tblEditar.getValueAt(fila, 0)));
+            ve.setIdVehiculo(Integer.parseInt(this.txtidVehiculo.getText()));
+            int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar el Vehiculo seleccionado?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje = control.eliminarVehiculo(ve);
+                JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+                this.mostrarRegistros();
+            }
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void mostrarRegistros(){
+        String[] columnas = {"idVehiculo", "Modelo", "Marca", "clase", "placa", "color", "anio", "nota", "estado"};
+        Object[] obj = new Object[9];
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String busqueda;
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from vehiculosvista";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                obj[0] = rs.getString("idVehiculo");
+                obj[1] = rs.getString("modelo");
+                obj[2] = rs.getString("marca");
+                obj[3] = rs.getString("clase");
+                obj[4] = rs.getString("placa");
+                obj[5] = rs.getString("color");
+                obj[6] = rs.getString("anio");
+                obj[7] = rs.getString("nota");
+                obj[8] = rs.getString("estado");
+                modelo.addRow(obj);
+            }
+            this.tblEditar.setModel(modelo);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarComboModelo(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from modelo";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmModelo.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarComboMarca(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from marca";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmMarca.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarComboClase(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from clase";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmClase.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarComboColor(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from color";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("nombre");
+                this.cbmColor.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarComboAnio(){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from anio";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("anio");
+                this.cbmAnio.addItem(String.valueOf(name));
+            }
+            rs.close();
+            pst.close();
+            cn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void llenarDatos(){
+        int fila = this.tblEditar.getSelectedRow();
+        this.txtidVehiculo.setText(String.valueOf(this.tblEditar.getValueAt(fila, 0)));      
+        this.cbmModelo.setSelectedItem(this.tblEditar.getValueAt(fila, 1));
+        this.cbmMarca.setSelectedItem(this.tblEditar.getValueAt(fila, 2));
+        this.cbmClase.setSelectedItem(this.tblEditar.getValueAt(fila, 3));
+        this.txtPlaca.setText((String)this.tblEditar.getValueAt(fila, 4));
+        this.cbmColor.setSelectedItem(this.tblEditar.getValueAt(fila, 5));
+        this.cbmAnio.setSelectedItem(this.tblEditar.getValueAt(fila, 6));
+        this.txtidNota1.setText((String)this.tblEditar.getValueAt(fila, 7));
+        this.cmbEstado.setSelectedItem(this.tblEditar.getValueAt(fila, 8));
+    }
+    
+    public Integer recogerid(String busqueda, String tabla, String columna, String cmb){
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String resultado = null;
+        int res = 0;
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select " + busqueda + " from " + tabla + " where " + columna + " like '" + cmb +"%'"; 
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                resultado = rs.getString(busqueda);
+            }
+            res = Integer.valueOf(resultado);
+        }catch(ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+       return res;
+    }
+    
+    public void editarVehiculo(){
+        Vehiculo vehiculo = new Vehiculo();
+        ControlVehiculo control = new ControlVehiculo();
+        try{
+          vehiculo.setIdVehiculo(Integer.valueOf(this.txtidVehiculo.getText()));
+          vehiculo.setPlaca(this.txtPlaca.getText());         
+          vehiculo.setEstado((String) this.cmbEstado.getSelectedItem());          
+          vehiculo.setNota(Integer.valueOf(this.txtidNota1.getText()));
+          
+          //Id Clase
+          String busqueda = "idClase";
+          String tabla = "clase";
+          String columna = "nombre";
+          String cmb = (String)this.cbmClase.getSelectedItem();
+          vehiculo.setIdClase(recogerid(busqueda, tabla, columna, cmb));         
+          //idanio
+          busqueda = "idanio";
+          tabla = "anio";
+          columna = "anio";
+          cmb = (String)this.cbmAnio.getSelectedItem();
+          vehiculo.setIdanio(recogerid(busqueda, tabla, columna, cmb));          
+          //idModelo
+          busqueda = "idModelo";
+          tabla = "modelo";
+          columna = "nombre";
+          cmb = (String)this.cbmModelo.getSelectedItem();
+          vehiculo.setIdModelo(recogerid(busqueda, tabla, columna, cmb));
+          //idColor
+          busqueda = "idColor";
+          tabla = "color";
+          columna = "nombre";
+          cmb = (String)this.cbmColor.getSelectedItem();         
+          vehiculo.setIdColor(recogerid(busqueda, tabla, columna, cmb));
+          //idMarca
+          busqueda = "idMarca";
+          tabla = "marca";
+          columna = "nombre";
+          cmb = (String)this.cbmMarca.getSelectedItem();         
+          vehiculo.setIdMarca(recogerid(busqueda, tabla, columna, cmb));
+                   
+          String mensaje = control.modificarVehiculo(vehiculo);
+          JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+          limpiar();
+        }catch(HeadlessException | NumberFormatException e){
+           JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);  
+        }
+    }
+    
+    public void buscar(){
+        String[] columnas = {"idVehiculo", "Modelo", "Marca", "Clase", "Placa", "Color", "Anio", "Nota", "Estado"};
+        Object[] obj = new Object[9];
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String busqueda;
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            busqueda = this.txtbusqueda.getText();
+            String eleccion = (String)this.cmbEleccion.getSelectedItem();
+            sql = "select * from vehiculosvista where " + eleccion + " like '" + busqueda + "%'";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                obj[0] = rs.getString("idVehiculo");
+                obj[1] = rs.getString("modelo");
+                obj[2] = rs.getString("marca");
+                obj[3] = rs.getString("clase");
+                obj[4] = rs.getString("placa");
+                obj[5] = rs.getString("color");
+                obj[6] = rs.getString("anio");
+                obj[7] = rs.getString("nota");
+                obj[8] = rs.getString("estado");
+                modelo.addRow(obj);
+            }
+            this.tblEditar.setModel(modelo);
+            
+        }catch(ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void limpiar(){
+        this.txtidVehiculo.setText("");
+        this.txtPlaca.setText("");
+        this.txtbusqueda.setText("");
+        this.txtPlaca.setText("");
+        this.cbmAnio.setSelectedItem(0);
+        this.cbmClase.setSelectedItem(0);
+        this.cbmColor.setSelectedItem(0);
+        this.cbmMarca.setSelectedItem(0);
+        this.cbmModelo.setSelectedItem(0);
+        this.cmbEstado.setSelectedItem(0);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -527,9 +777,15 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JComboBox<String> cbmAnio;
+    private javax.swing.JComboBox<String> cbmClase;
+    private javax.swing.JComboBox<String> cbmColor;
+    private javax.swing.JComboBox<String> cbmMarca;
+    private javax.swing.JComboBox<String> cbmModelo;
     private javax.swing.JComboBox<String> cmbEleccion;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
@@ -540,17 +796,11 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblNota;
     private javax.swing.JLabel lblestado;
     private javax.swing.JLabel lblidAño;
@@ -560,14 +810,10 @@ public class FrmEditarVehiculos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblidcolor;
     private javax.swing.JLabel lblimodelo;
     private javax.swing.JLabel lblplaca;
-    private javax.swing.JFormattedTextField txtPlaca;
+    private javax.swing.JTable tblEditar;
+    private javax.swing.JTextField txtPlaca;
     private javax.swing.JTextField txtbusqueda;
-    private javax.swing.JTextField txtidAño;
-    private javax.swing.JTextField txtidClase;
-    private javax.swing.JTextField txtidColor;
-    private javax.swing.JTextField txtidMarca;
-    private javax.swing.JTextField txtidModelo;
-    private javax.swing.JTextField txtidNota;
+    private javax.swing.JTextField txtidNota1;
     private javax.swing.JTextField txtidVehiculo;
     // End of variables declaration//GEN-END:variables
 }

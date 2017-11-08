@@ -55,7 +55,7 @@ public class ControlVehiculo implements OperacionesVehiculo {
        try{
                Class.forName(con.getDriver());
             cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
-            sql = "{CALL `modificarVehiculo` (?,?,?,?,?,?,?,?,?)}";
+            sql = "{CALL `modificarVehiculo`(?,?,?,?,?,?,?,?,?)}";
              pst = cn.prepareStatement(sql);
              pst.setInt(1, veh.getIdVehiculo());
              pst.setString(2, veh.getPlaca());
@@ -114,7 +114,7 @@ public class ControlVehiculo implements OperacionesVehiculo {
            Class.forName(con.getDriver());
            cn = DriverManager.getConnection(con.getUrl(),con.getUsuario(),con.getClave());
            st = cn.createStatement();
-           sentencia = "{Call mostrarVehiculo()}";
+           sentencia = "{Call `mostrarVehiculo`()}";
            rs = st.executeQuery(sentencia);
              while(rs.next()){
                 listaVehiculos.add(new Vehiculo(

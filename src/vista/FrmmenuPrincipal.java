@@ -36,7 +36,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnVehiculos = new javax.swing.JMenu();
-        jmenuBuscarVehiculo = new javax.swing.JMenuItem();
         jMenuAgregarVehiculo = new javax.swing.JMenuItem();
         jMenuEditarVehiculo = new javax.swing.JMenuItem();
         jMenuAnularVehiculo = new javax.swing.JMenuItem();
@@ -93,14 +92,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         );
 
         mnVehiculos.setText("Vehiculos");
-
-        jmenuBuscarVehiculo.setText("Buscar Vehiculo");
-        jmenuBuscarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmenuBuscarVehiculoMousePressed(evt);
-            }
-        });
-        mnVehiculos.add(jmenuBuscarVehiculo);
 
         jMenuAgregarVehiculo.setText("Agregar Vehiculo");
         jMenuAgregarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -342,13 +333,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_minuevoProveedorActionPerformed
 
-    private void jmenuBuscarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenuBuscarVehiculoMousePressed
-        // TODO add your handling code here:
-        FrmbuscarVehiculos buscar = new FrmbuscarVehiculos();
-        desktop.add(buscar);
-        buscar.setVisible(true);
-    }//GEN-LAST:event_jmenuBuscarVehiculoMousePressed
-
     private void jMenuEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarVehiculoActionPerformed
         // TODO add your handling code here:
         
@@ -548,7 +532,6 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuReporteProveedores;
     private javax.swing.JMenu jMenuReporteVehiculos;
     private javax.swing.JMenu jMenuSalir;
-    private javax.swing.JMenuItem jmenuBuscarVehiculo;
     private javax.swing.JMenuItem minuevaRenta;
     private javax.swing.JMenuItem minuevoProveedor;
     private javax.swing.JMenu mnSolicitudes;

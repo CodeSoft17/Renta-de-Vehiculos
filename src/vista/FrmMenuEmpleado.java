@@ -33,7 +33,6 @@ public class FrmMenuEmpleado extends javax.swing.JFrame {
         Desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnVehiculos = new javax.swing.JMenu();
-        jmenuBuscarVehiculo = new javax.swing.JMenuItem();
         jMenuAgregarVehiculo = new javax.swing.JMenuItem();
         jMenuEditarVehiculo = new javax.swing.JMenuItem();
         jMenuAnularVehiculo = new javax.swing.JMenuItem();
@@ -66,14 +65,6 @@ public class FrmMenuEmpleado extends javax.swing.JFrame {
         );
 
         mnVehiculos.setText("Vehiculos");
-
-        jmenuBuscarVehiculo.setText("Buscar Vehiculo");
-        jmenuBuscarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmenuBuscarVehiculoMousePressed(evt);
-            }
-        });
-        mnVehiculos.add(jmenuBuscarVehiculo);
 
         jMenuAgregarVehiculo.setText("Agregar Vehiculo");
         jMenuAgregarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,13 +188,6 @@ public class FrmMenuEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmenuBuscarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenuBuscarVehiculoMousePressed
-        // TODO add your handling code here:
-        FrmbuscarVehiculos buscar = new FrmbuscarVehiculos();
-        Desktop.add(buscar);
-        buscar.setVisible(true);
-    }//GEN-LAST:event_jmenuBuscarVehiculoMousePressed
-
     private void jMenuAgregarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAgregarVehiculoMousePressed
         FrmagregarVehiculo agregar = new FrmagregarVehiculo();
         Desktop.add(agregar);
@@ -324,7 +308,6 @@ public class FrmMenuEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuReporteProveedores;
     private javax.swing.JMenu jMenuReporteVehiculos;
     private javax.swing.JMenu jMenuSalir;
-    private javax.swing.JMenuItem jmenuBuscarVehiculo;
     private javax.swing.JMenuItem minuevaRenta;
     private javax.swing.JMenu mnVehiculos;
     // End of variables declaration//GEN-END:variables
