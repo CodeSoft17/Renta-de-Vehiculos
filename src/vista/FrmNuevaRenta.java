@@ -63,7 +63,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbBusqueda = new javax.swing.JComboBox<>();
         txtbusqueda = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -164,13 +164,18 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         jLabel1.setText("Seleccione una forma de busqueda");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idCliente", "idEmpleado", "Tipo de Pago", " " }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        cmbBusqueda.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmbBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idCliente", "Nombre Cliente", "idEmpleado", "Empleado", "Tipo de Pago", " " }));
+        jPanel2.add(cmbBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
         txtbusqueda.setBackground(new java.awt.Color(36, 47, 65));
         txtbusqueda.setForeground(new java.awt.Color(255, 255, 255));
         txtbusqueda.setBorder(null);
+        txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtbusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 110, 10));
 
@@ -335,6 +340,11 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         this.ingresarRegistros();
         mostrarRenta();
     }//GEN-LAST:event_btnnuevaMousePressed
+
+    private void txtbusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyTyped
+        // TODO add your handling code here:
+        this.buscarRenta();
+    }//GEN-LAST:event_txtbusquedaKeyTyped
     
     public void mostrarRenta(){     
         DefaultTableModel modelo = new DefaultTableModel();
@@ -380,6 +390,17 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         }
     }
     
+    public void buscarRenta(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        ControlRenta control = new ControlRenta();
+        try{           
+            modelo = control.buscarRenta(String.valueOf(this.cmbBusqueda.getSelectedItem()), this.txtbusqueda.getText());
+            this.tblClientes.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     public void ingresarRegistros(){
         Renta re = new Renta();
         ControlRenta control = new ControlRenta();
@@ -398,12 +419,14 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnnueva;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JComboBox<String> cmbBusqueda;
     private javax.swing.JComboBox<String> cmbtipoPago;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

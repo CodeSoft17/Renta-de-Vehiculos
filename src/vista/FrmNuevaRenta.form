@@ -272,17 +272,19 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmbBusqueda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="6">
                 <StringItem index="0" value="idCliente"/>
-                <StringItem index="1" value="idEmpleado"/>
-                <StringItem index="2" value="Tipo de Pago"/>
-                <StringItem index="3" value=" "/>
+                <StringItem index="1" value="Nombre Cliente"/>
+                <StringItem index="2" value="idEmpleado"/>
+                <StringItem index="3" value="Empleado"/>
+                <StringItem index="4" value="Tipo de Pago"/>
+                <StringItem index="5" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -307,6 +309,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbusquedaKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="470" y="330" width="110" height="-1"/>

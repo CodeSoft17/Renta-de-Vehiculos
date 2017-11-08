@@ -190,5 +190,41 @@ public class ControlRenta implements OperacionesRenta {
         }
       return modelo;
     }
+
+    @Override
+    public DefaultTableModel buscarRenta(String cmb, String busqueda) {
+        String[] columnas = {"idRenta", "Nombre Cliente", "idCliente", "Empleado", "idEmpleado", "idVehiculo", "nombre", "tipoDePago", "total"};
+        Object[] obj = new Object[9];
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        FrmNuevaRenta renta = new FrmNuevaRenta();
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from rentavista where " + cmb + " like '" + busqueda + "%'";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                obj[0] = rs.getString("idRenta");
+                obj[1] = rs.getString("Nombre Cliente");
+                obj[2] = rs.getString("idCliente");
+                obj[3] = rs.getString("Empleado");
+                obj[4] = rs.getString("idEmpleado");
+                obj[5] = rs.getString("idVehiculo");
+                obj[6] = rs.getString("nombre");
+                obj[7] = rs.getString("tipoDePago");
+                obj[8] = rs.getString("total");
+                modelo.addRow(obj);
+            }
+            
+        }catch(ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(renta, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+       return modelo;
+    }
     
 }

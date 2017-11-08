@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,5 +25,7 @@ public interface OperacionesRenta {
    public DefaultTableModel mostrarEmpleados();
    
    public DefaultTableModel mostrarClientes();
+   
+   public DefaultTableModel buscarRenta(String cmb, String busqueda);
     
 }
