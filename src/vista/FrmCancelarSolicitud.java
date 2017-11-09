@@ -5,6 +5,17 @@
  */
 package vista;
 
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.solicitudVehiculo;
+import Controlador.ControlSolicitud;
+import java.awt.HeadlessException;
+
 /**
  *
  * @author Circus
@@ -16,8 +27,57 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
      */
     public FrmCancelarSolicitud() {
         initComponents();
+        mostrarSolicitudes();
     }
-
+        
+         public void mostrarSolicitudes(){
+        String[] columnas = {"IdSolicitud", "IdEmpleado", "Fecha", "idProveedor", "idVehiculo"};
+        Object[] obj = new Object[5];
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        Conexion con = new Conexion();
+        Connection cn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql;
+        String busqueda;
+       try{
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());
+            sql = "select * from solicitudvehiculo";
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                obj[0] = rs.getInt("idSolicitud");
+                obj[1] = rs.getInt("idEmpleado");
+                obj[2] = rs.getString("fecha");
+                obj[3] = rs.getInt("idProveedor");
+                obj[4] = rs.getInt("idVehiculo");
+                modelo.addRow(obj);
+            }
+            this.tblBuscar.setModel(modelo);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+         public void eliminarSolicitud(){
+             solicitudVehiculo sv = new solicitudVehiculo();
+             ControlSolicitud control = new ControlSolicitud();
+              int fila;
+               fila = this.tblBuscar.getSelectedRow();
+              try{
+            this.txtidSolicitud.setText(String.valueOf(this.tblBuscar.getValueAt(fila, 0)));
+            sv.setIdSolicitud(Integer.parseInt(this.txtidSolicitud.getText()));
+            int respuesta = JOptionPane.showConfirmDialog(this, "Desea eliminar el Vehiculo seleccionado?", "Eliminar", JOptionPane.YES_NO_OPTION);
+            if(respuesta == JOptionPane.OK_OPTION){
+                String mensaje = control.eliminarSolicud(sv);
+                JOptionPane.showMessageDialog(this, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+               this.mostrarSolicitudes();
+            }
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(this, e.toString(), "Resultado", JOptionPane.ERROR_MESSAGE);
+        }
+         }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +89,9 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        txttiopoCancelacion = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblBuscar = new javax.swing.JTable();
+        txtidSolicitud = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btnsalir = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
@@ -43,47 +102,43 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(91, 228, 138));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "idSlocitud", "idEmpleado", "fecha", "Correlativo", "idProveedor"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblBuscar);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "idsolicitud", "idempleado", "fecha", "correlativo", "idProveedor", " " }));
-
-        txttiopoCancelacion.setBackground(new java.awt.Color(36, 47, 65));
-        txttiopoCancelacion.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
-        txttiopoCancelacion.setForeground(new java.awt.Color(255, 255, 255));
-        txttiopoCancelacion.setBorder(null);
-        txttiopoCancelacion.addActionListener(new java.awt.event.ActionListener() {
+        txtidSolicitud.setBackground(new java.awt.Color(36, 47, 65));
+        txtidSolicitud.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        txtidSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        txtidSolicitud.setBorder(null);
+        txtidSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttiopoCancelacionActionPerformed(evt);
+                txtidSolicitudActionPerformed(evt);
             }
         });
 
@@ -101,6 +156,11 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
         btncancelar.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btncancelar.setForeground(new java.awt.Color(255, 255, 255));
         btncancelar.setText("Cancelar");
+        btncancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btncancelarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,41 +169,34 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txttiopoCancelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(166, 166, 166)
                         .addComponent(btncancelar)
-                        .addGap(72, 72, 72)
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(93, 93, 93)
+                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtidSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txttiopoCancelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
+                .addGap(49, 49, 49)
+                .addComponent(txtidSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncancelar)
                     .addComponent(btnsalir))
-                .addGap(28, 28, 28)
+                .addGap(42, 42, 42)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,24 +213,28 @@ public class FrmCancelarSolicitud extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txttiopoCancelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttiopoCancelacionActionPerformed
+    private void txtidSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidSolicitudActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txttiopoCancelacionActionPerformed
+    }//GEN-LAST:event_txtidSolicitudActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
+    private void btncancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMousePressed
+        // TODO add your handling code here:
+        eliminarSolicitud();
+    }//GEN-LAST:event_btncancelarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txttiopoCancelacion;
+    private javax.swing.JTable tblBuscar;
+    private javax.swing.JTextField txtidSolicitud;
     // End of variables declaration//GEN-END:variables
 }

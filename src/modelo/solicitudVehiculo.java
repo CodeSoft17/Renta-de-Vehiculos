@@ -15,17 +15,29 @@ public class solicitudVehiculo {
     private String fecha;
     private int correlativo;
     private int idProveedor;
+    private int idVehiculo;
 
     public solicitudVehiculo() {
     }
 
-    public solicitudVehiculo(int idSolicitud, int idEmpleado, String fecha, int correlativo, int idProveedor) {
+    public solicitudVehiculo(int idSolicitud, int idEmpleado, String fecha, int correlativo, int idProveedor, int idVehiculo) {
         this.idSolicitud = idSolicitud;
         this.idEmpleado = idEmpleado;
         this.fecha = fecha;
         this.correlativo = correlativo;
         this.idProveedor = idProveedor;
+        this.idVehiculo = idVehiculo;
     }
+
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(int idVehiculo) {
+        this.idVehiculo = idVehiculo;
+    }
+
+    
 
     public int getIdSolicitud() {
         return idSolicitud;
