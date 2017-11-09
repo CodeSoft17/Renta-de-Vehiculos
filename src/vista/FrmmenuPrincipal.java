@@ -7,7 +7,20 @@ package vista;
 
 import modelo.empleado;
 import Controlador.ControlLogIn;
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+
 
 
 /**
@@ -447,6 +460,21 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuReporteCLientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuReporteCLientesMousePressed
         // TODO add your handling code here:
+        Conexion con = new Conexion();
+        Connection cn;
+        try {
+            Class.forName(con.getDriver());
+            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());           
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("../reportes/reporteClientes.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);                    
+            cn.close();
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
        
     }//GEN-LAST:event_jMenuReporteCLientesMousePressed
     

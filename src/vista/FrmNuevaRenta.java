@@ -463,6 +463,7 @@ public class FrmNuevaRenta extends javax.swing.JInternalFrame {
         fila = this.tblRenta.getSelectedRow();
         try{
             this.txtIdRenta.setText(String.valueOf(this.tblRenta.getValueAt(fila, 0)));
+            re.setIdRenta(Integer.valueOf(this.txtIdRenta.getText()));
             System.out.println("idRenta: " + this.txtIdRenta.getText());
             re.setIdCliente(Integer.valueOf(this.txtidCliente.getText()));
             System.out.println("idCliente: " + this.txtidCliente.getText());
