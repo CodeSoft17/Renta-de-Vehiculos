@@ -28,6 +28,7 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
      */
     public FrmEditarProveedor() {
         initComponents();
+        llenarCombo();
     }
 
     /**
@@ -590,6 +591,7 @@ public class FrmEditarProveedor extends javax.swing.JInternalFrame {
     private void btneditar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btneditar1MousePressed
         // TODO add your handling code here:
         modificarRegistros();
+        llenarCombo();
     }//GEN-LAST:event_btneditar1MousePressed
 
     private void btnsalir1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalir1MousePressed

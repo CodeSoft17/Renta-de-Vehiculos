@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import reportes.Reporte;
 
 
 
@@ -289,6 +290,11 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuReporteVehiculos);
 
         jMenuSalir.setText("Salir");
+        jMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuSalirMousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -459,24 +465,12 @@ public class FrmmenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuELiminarProveedorMousePressed
 
     private void jMenuReporteCLientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuReporteCLientesMousePressed
-        // TODO add your handling code here:
-        Conexion con = new Conexion();
-        Connection cn;
-        try {
-            Class.forName(con.getDriver());
-            cn = DriverManager.getConnection(con.getUrl(), con.getUsuario(), con.getClave());           
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("../reportes/reporteClientes.jasper"));
-            JasperPrint jp = JasperFillManager.fillReport(jr, null, cn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setVisible(true);                    
-            cn.close();
-            
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        
-       
+        JOptionPane.showMessageDialog(this, new Reporte().generarReporte(), "Resultado",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuReporteCLientesMousePressed
+
+    private void jMenuSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jMenuSalirMousePressed
     
     /**
      * @param args the command line arguments

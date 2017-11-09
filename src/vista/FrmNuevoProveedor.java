@@ -341,6 +341,7 @@ public class FrmNuevoProveedor extends javax.swing.JInternalFrame {
         this.txtnombre.setText("");
         this.txtsitio.setText("");
         this.txtemail.setText("");
+        this.txtTelefono.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

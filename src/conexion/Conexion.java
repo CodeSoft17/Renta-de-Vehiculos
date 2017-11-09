@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package conexion;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
 /**
  *
  * @author Joe
@@ -54,14 +55,19 @@ public class Conexion {
 
     public void setClave(String clave) {
         this.clave = clave;
-    }
-
+    }/*
+    private Connection conexion = null;
+    public Connection getConexion() throws Exception{
+        Class.forName("org.postgresql.Driver");
+        conexion = DriverManager.getConnection(url, usuario, bd);
+        return conexion;
+    }*/
     public Conexion() {
         driver = "com.mysql.jdbc.Driver";
-        bd = "rentavehiculos";
+        bd = "bdPlanilla";
         url = "jdbc:mysql://localhost:3306/" + bd;
         usuario = "root";
-        clave = "root";
+        clave = "";
     }
 
     public Conexion(String driver, String bd, String url, String usuario, String clave) {
